@@ -808,7 +808,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          message: 'Ti si turistički vodič za hrvatske otoke. Odgovaraj na hrvatskom, kratko (max 3 rečenice). ' + userMessage
+          message: userMessage
         })
       });
       const data = await response.json();
