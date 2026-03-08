@@ -79,7 +79,6 @@
     display: block;
   }
 
-  /* CHAT PANEL */
   .chat-panel {
     display: flex;
     flex-direction: column;
@@ -120,7 +119,6 @@
     line-height: 1.5;
   }
 
-  /* INFO PORUKE */
   .chat-messages {
     flex: 1;
     overflow-y: auto;
@@ -162,59 +160,6 @@
     border: 1px solid var(--sand);
   }
 
-  .chatgpt-info {
-    background: linear-gradient(135deg, #10a37f15, #10a37f08);
-    border: 1px solid #10a37f40;
-    border-radius: 12px;
-    padding: 16px;
-    margin: 8px 0;
-    text-align: center;
-  }
-
-  .chatgpt-logo {
-    font-size: 2rem;
-    margin-bottom: 8px;
-  }
-
-  .chatgpt-info h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    color: var(--text-dark);
-    margin-bottom: 6px;
-  }
-
-  .chatgpt-info p {
-    font-size: 0.75rem;
-    color: var(--text-mid);
-    line-height: 1.5;
-    margin-bottom: 12px;
-  }
-
-  .btn-chatgpt {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    background: #10a37f;
-    color: white;
-    text-decoration: none;
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    border-radius: 20px;
-    transition: all 0.3s;
-    border: none;
-    cursor: pointer;
-    font-family: 'Outfit', sans-serif;
-  }
-  .btn-chatgpt:hover {
-    background: #0d8c6d;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(16,163,127,0.3);
-  }
-
-  /* QUICK QUESTIONS */
   .quick-section {
     padding: 12px 16px;
     border-top: 1px solid var(--sand);
@@ -247,16 +192,13 @@
     cursor: pointer;
     transition: all 0.2s;
     font-family: 'Outfit', sans-serif;
-    text-decoration: none;
-    display: inline-block;
   }
   .quick-btn:hover {
-    background: #10a37f;
-    border-color: #10a37f;
+    background: var(--sea);
+    border-color: var(--sea);
     color: white;
   }
 
-  /* INPUT */
   .chat-input-area {
     padding: 12px 16px;
     border-top: 1px solid var(--sand);
@@ -278,13 +220,13 @@
     outline: none;
     transition: border-color 0.3s;
   }
-  .chat-input:focus { border-color: #10a37f; background: white; }
+  .chat-input:focus { border-color: var(--sea); background: white; }
   .chat-input::placeholder { color: var(--text-light); }
 
   .chat-send {
     width: 38px;
     height: 38px;
-    background: #10a37f;
+    background: var(--sea);
     color: white;
     border: none;
     border-radius: 50%;
@@ -296,7 +238,7 @@
     justify-content: center;
     flex-shrink: 0;
   }
-  .chat-send:hover { background: #0d8c6d; transform: scale(1.05); }
+  .chat-send:hover { background: var(--sea-dark); transform: scale(1.05); }
 
   @media (max-width: 900px) {
     html, body { overflow: auto; }
@@ -315,7 +257,6 @@
 
 <div class="main">
 
-  <!-- KARTA -->
   <div class="map-section">
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1456825.1!2d16.4!3d44.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1shr!2shr!4v1620000000000!5m2!1shr!2shr"
@@ -325,18 +266,17 @@
     </iframe>
   </div>
 
-  <!-- CHAT PANEL -->
   <div class="chat-panel">
     <div class="chat-panel-header">
       <div class="chat-panel-tag">✦ AI Turistički savjetnik</div>
-      <h2 class="chat-panel-title">Pitaj <em>ChatGPT</em></h2>
-      <p class="chat-panel-desc">Besplatni AI asistent za savjete o putovanju u Hrvatsku.</p>
+      <h2 class="chat-panel-title">Pitaj <em>AI vodiča</em></h2>
+      <p class="chat-panel-desc">AI asistent za savjete o putovanju u Hrvatsku. Pišite na bilo kojem jeziku!</p>
     </div>
 
     <div class="chat-messages" id="chatMessages">
       <div class="chat-msg bot">
         <div class="chat-avatar">🌊</div>
-        <div class="chat-bubble">Bok! Ja sam vaš AI turistički vodič za Hrvatsku. 🇭🇷 Pitajte me o plažama, gradovima, smještaju, restoranima ili aktivnostima!</div>
+        <div class="chat-bubble">Bok! / Hello! / Ciao! 🇭🇷<br>Ja sam vaš AI turistički vodič za Hrvatsku. Pitajte me na bilo kojem jeziku o plažama, gradovima, smještaju ili aktivnostima!</div>
       </div>
     </div>
 
@@ -353,8 +293,13 @@
     </div>
 
     <div class="chat-input-area">
-      <input type="text" class="chat-input" id="chatInput" placeholder="Upiši pitanje o Hrvatskoj..." />
-      <button class="chat-send" id="chatSend">➤</button>
+      <input type="text" class="chat-input" id="chatInput" placeholder="Pitajte na bilo kojem jeziku..." />
+      <button class="chat-send" id="chatSend">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
     </div>
   </div>
 
@@ -375,7 +320,6 @@
     `;
     chatMessages.appendChild(msg);
     chatMessages.scrollTop = chatMessages.scrollHeight;
-    return msg;
   }
 
   function addTyping() {
@@ -404,10 +348,10 @@
       const res = await fetch('/.netlify/functions/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: history })
+        body: JSON.stringify({ message: text })
       });
       const data = await res.json();
-      const reply = data.choices[0].message.content;
+      const reply = data.reply || 'Žao mi je, pokušajte ponovo.';
       history.push({ role: 'assistant', content: reply });
       removeTyping();
       addMessage(reply, false);
