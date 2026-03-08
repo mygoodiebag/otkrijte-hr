@@ -173,7 +173,7 @@
   }
 
   .park-card.visible { opacity: 1; transform: translateY(0); }
-  .park-card:hover { box-shadow: 0 8px 40px rgba(28,28,26,0.15); z-index: 2; }
+  .park-card:hover { box-shadow: 0 8px 40px rgba(28,28,26,0.15); z-index: 2; cursor: pointer; }
 
   .park-img {
     position: relative;
@@ -533,7 +533,7 @@
   <section class="parkovi">
     <div class="parkovi-grid">
 
-      <div class="park-card">
+      <div class="park-card" onclick="askAboutPark(\'Plitvička jezera\')">
         <div class="park-img">
           <img src="https://images.unsplash.com/photo-1586348943529-beaae6c28db9?w=600&q=80" alt="Plitvička jezera">
           <div class="park-number">1</div>
@@ -552,7 +552,7 @@
         </div>
       </div>
 
-      <div class="park-card">
+      <div class="park-card" onclick="askAboutPark(\'Krka\')">
         <div class="park-img">
           <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Krka">
           <div class="park-number">2</div>
@@ -571,7 +571,7 @@
         </div>
       </div>
 
-      <div class="park-card">
+      <div class="park-card" onclick="askAboutPark(\'Kornati\')">
         <div class="park-img">
           <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=80" alt="Kornati">
           <div class="park-number">3</div>
@@ -590,7 +590,7 @@
         </div>
       </div>
 
-      <div class="park-card">
+      <div class="park-card" onclick="askAboutPark(\'Paklenica\')">
         <div class="park-img">
           <img src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=600&q=80" alt="Paklenica">
           <div class="park-number">4</div>
@@ -609,7 +609,7 @@
         </div>
       </div>
 
-      <div class="park-card">
+      <div class="park-card" onclick="askAboutPark(\'Risnjak\')">
         <div class="park-img">
           <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=80" alt="Risnjak">
           <div class="park-number">5</div>
@@ -628,7 +628,7 @@
         </div>
       </div>
 
-      <div class="park-card">
+      <div class="park-card" onclick="askAboutPark(\'Sjeverni Velebit\')">
         <div class="park-img">
           <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80" alt="Sjeverni Velebit">
           <div class="park-number">6</div>
@@ -647,7 +647,7 @@
         </div>
       </div>
 
-      <div class="park-card">
+      <div class="park-card" onclick="askAboutPark(\'Brijuni\')">
         <div class="park-img">
           <img src="https://images.unsplash.com/photo-Fh4DNarct54?w=600&q=80" alt="Brijuni"
                onerror="this.src='https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80'">
@@ -667,7 +667,7 @@
         </div>
       </div>
 
-      <div class="park-card">
+      <div class="park-card" onclick="askAboutPark(\'Mljet\')">
         <div class="park-img">
           <img src="https://images.unsplash.com/photo-1644722614801-d7e4bd40c276?w=600&q=80" alt="Mljet">
           <div class="park-number">8</div>
@@ -803,6 +803,13 @@
   function sendQuick(text) {
     addMessage(text, 'user');
     callAI(text);
+  }
+
+  function askAboutPark(parkName) {
+    const question = `Reci mi više o nacionalnom parku ${parkName} — što posjetiti, kada ići i za koga je idealan?`;
+    addMessage(question, 'user');
+    callAI(question);
+    messagesDiv.scrollIntoView({ behavior: 'smooth' });
   }
 
   const observer = new IntersectionObserver((entries) => {
