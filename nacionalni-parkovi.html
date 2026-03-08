@@ -139,6 +139,13 @@
   }
   .intro-strip p strong { color: white; }
 
+  /* MAIN LAYOUT s chatom */
+  .main-layout {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    min-height: 80vh;
+  }
+
   .parkovi {
     padding: 80px 60px;
     background: var(--white);
@@ -146,7 +153,7 @@
 
   .parkovi-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 3px;
     background: var(--sand);
   }
@@ -158,7 +165,6 @@
     min-height: 210px;
     text-decoration: none;
     color: inherit;
-    transition: box-shadow 0.3s;
     position: relative;
     overflow: hidden;
     opacity: 0;
@@ -270,6 +276,197 @@
   }
   .park-link:hover { color: var(--green-light); gap: 10px; }
 
+  /* CHAT PANEL */
+  .chat-panel {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    background: var(--cream);
+    border-left: 1px solid var(--sand);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .chat-header {
+    padding: 28px 24px 20px;
+    border-bottom: 1px solid var(--sand);
+    background: var(--white);
+  }
+
+  .chat-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+
+  .chat-header p {
+    font-size: 0.8rem;
+    color: var(--text-light);
+  }
+
+  .chat-ai-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    background: rgba(42,107,74,0.1);
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-top: 10px;
+  }
+
+  .chat-ai-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    scroll-behavior: smooth;
+  }
+
+  .chat-messages::-webkit-scrollbar { width: 4px; }
+  .chat-messages::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 4px; }
+
+  .msg { display: flex; gap: 10px; align-items: flex-start; }
+  .msg.user { flex-direction: row-reverse; }
+
+  .msg-avatar {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .msg.ai .msg-avatar { background: var(--green); color: #fff; }
+  .msg.user .msg-avatar { background: var(--gold); color: #fff; }
+
+  .msg-bubble {
+    max-width: 78%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .msg.ai .msg-bubble {
+    background: var(--white);
+    color: var(--text-dark);
+    border-radius: 4px 14px 14px 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .msg.user .msg-bubble {
+    background: var(--green);
+    color: #fff;
+    border-radius: 14px 4px 14px 14px;
+  }
+
+  .quick-questions {
+    padding: 12px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-top: 1px solid var(--sand);
+    background: var(--white);
+  }
+
+  .quick-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 2px;
+  }
+
+  .quick-btns { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .quick-btn {
+    font-size: 0.78rem;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--green-light);
+    background: rgba(42,107,74,0.06);
+    color: var(--green);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Outfit', sans-serif;
+    white-space: nowrap;
+  }
+  .quick-btn:hover { background: var(--green); color: #fff; border-color: var(--green); }
+
+  .chat-input-area {
+    padding: 14px 18px 18px;
+    border-top: 1px solid var(--sand);
+    background: var(--white);
+    display: flex;
+    gap: 10px;
+  }
+
+  .chat-input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid var(--sand);
+    border-radius: 24px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    background: var(--cream);
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .chat-input:focus { border-color: var(--green-light); }
+
+  .chat-send {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: var(--green);
+    color: #fff;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, transform 0.1s;
+    flex-shrink: 0;
+  }
+  .chat-send:hover { background: #1d5038; }
+  .chat-send:active { transform: scale(0.95); }
+
+  .typing-indicator { display: flex; gap: 4px; align-items: center; padding: 10px 14px; }
+  .typing-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--green-light);
+    animation: typingAnim 1.2s infinite;
+  }
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes typingAnim {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+    30% { transform: translateY(-6px); opacity: 1; }
+  }
+
   .back-section {
     padding: 60px;
     background: var(--cream);
@@ -296,11 +493,12 @@
   .btn-back:hover { background: #1d5038; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(42,107,74,0.3); }
 
   @media (max-width: 900px) {
+    .main-layout { grid-template-columns: 1fr; }
+    .chat-panel { position: fixed; bottom: 0; left: 0; right: 0; height: 50vh; z-index: 50; }
     nav { padding: 16px 24px; }
     .hero-content { padding: 0 24px 40px; }
     .intro-strip { padding: 20px 24px; }
-    .parkovi { padding: 40px 24px; }
-    .parkovi-grid { grid-template-columns: 1fr; }
+    .parkovi { padding: 40px 24px 60vh; }
     .park-card { grid-template-columns: 1fr; }
     .park-img { height: 200px; }
     .back-section { padding: 40px 24px; }
@@ -310,8 +508,8 @@
 <body>
 
 <nav>
-  <a href="hrvatska-portal.html" class="logo">Otkrijte<span>HR</span></a>
-  <a href="hrvatska-portal.html" class="nav-back">← Povratak na početnu</a>
+  <a href="index.html" class="logo">Otkrijte<span>HR</span></a>
+  <a href="index.html" class="nav-back">← Povratak na početnu</a>
 </nav>
 
 <section class="hero">
@@ -319,7 +517,7 @@
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="breadcrumb">
-      <a href="hrvatska-portal.html">OtkrijtHR</a> &nbsp;/&nbsp; Nacionalni parkovi
+      <a href="index.html">OtkrijtHR</a> &nbsp;/&nbsp; Nacionalni parkovi
     </div>
     <h1 class="hero-title">8 Nacionalnih<br><em>parkova</em> Hrvatske</h1>
     <p class="hero-subtitle">Hrvatska prirodna baština — od šumovitih planina do bistre rijeke i magičnih slapova.</p>
@@ -330,170 +528,283 @@
   <p>Hrvatska ima <strong>8 nacionalnih parkova</strong> koji zajedno pokrivaju više od <strong>1.000 km²</strong> zaštićene prirode. Svaki park je jedinstven — od karstnih jezera i slapova do stjenovitih morskih akvatorija i divljih planina.</p>
 </div>
 
-<section class="parkovi">
-  <div class="parkovi-grid">
+<div class="main-layout">
 
-    <div class="park-card">
-      <div class="park-img">
-        <img src="https://images.unsplash.com/photo-1586348943529-beaae6c28db9?w=600&q=80" alt="Plitvička jezera">
-        <div class="park-number">1</div>
-        <div class="park-region-badge">Lika</div>
-      </div>
-      <div class="park-body">
-        <div class="park-tag">🏆 UNESCO baština</div>
-        <h2 class="park-name">Plitvička jezera</h2>
-        <p class="park-desc">16 terasastih jezera međusobno povezanih slapovima u nestvarnom okruženju prašume. Najposjećeniji park u Hrvatskoj i UNESCO-va svjetska baština od 1979.</p>
-        <div class="park-facts">
-          <span class="fact">📐 296 km²</span>
-          <span class="fact">💧 16 jezera</span>
-          <span class="fact">🌊 Slapovi do 78m</span>
+  <section class="parkovi">
+    <div class="parkovi-grid">
+
+      <div class="park-card">
+        <div class="park-img">
+          <img src="https://images.unsplash.com/photo-1586348943529-beaae6c28db9?w=600&q=80" alt="Plitvička jezera">
+          <div class="park-number">1</div>
+          <div class="park-region-badge">Lika</div>
         </div>
-        <a href="https://np-plitvicka-jezera.hr" target="_blank" class="park-link">Službena stranica →</a>
+        <div class="park-body">
+          <div class="park-tag">🏆 UNESCO baština</div>
+          <h2 class="park-name">Plitvička jezera</h2>
+          <p class="park-desc">16 terasastih jezera međusobno povezanih slapovima u nestvarnom okruženju prašume. Najposjećeniji park u Hrvatskoj i UNESCO-va svjetska baština od 1979.</p>
+          <div class="park-facts">
+            <span class="fact">📐 296 km²</span>
+            <span class="fact">💧 16 jezera</span>
+            <span class="fact">🌊 Slapovi do 78m</span>
+          </div>
+          <a href="https://np-plitvicka-jezera.hr" target="_blank" class="park-link">Službena stranica →</a>
+        </div>
+      </div>
+
+      <div class="park-card">
+        <div class="park-img">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Krka">
+          <div class="park-number">2</div>
+          <div class="park-region-badge">Dalmacija</div>
+        </div>
+        <div class="park-body">
+          <div class="park-tag">💧 Rijeka i slapovi</div>
+          <h2 class="park-name">Krka</h2>
+          <p class="park-desc">Sedam slapova rijeke Krke, od kojih je Skradinski buk najpoznatiji. Bogata historia — Rimljani, Turci, mlinovi.</p>
+          <div class="park-facts">
+            <span class="fact">📐 109 km²</span>
+            <span class="fact">🌊 7 slapova</span>
+            <span class="fact">🏛️ Rimske ruševine</span>
+          </div>
+          <a href="https://np-krka.hr" target="_blank" class="park-link">Službena stranica →</a>
+        </div>
+      </div>
+
+      <div class="park-card">
+        <div class="park-img">
+          <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=80" alt="Kornati">
+          <div class="park-number">3</div>
+          <div class="park-region-badge">Dalmacija</div>
+        </div>
+        <div class="park-body">
+          <div class="park-tag">⛵ Nautički raj</div>
+          <h2 class="park-name">Kornati</h2>
+          <p class="park-desc">Labirint od 89 otoka, otočića i grebena — jedni od najgušće raspoređenih otoka na Mediteranu. Raj za jedriličare i ronjenje.</p>
+          <div class="park-facts">
+            <span class="fact">📐 220 km²</span>
+            <span class="fact">🏝️ 89 otoka</span>
+            <span class="fact">🤿 Ronjenje</span>
+          </div>
+          <a href="https://np-kornati.hr" target="_blank" class="park-link">Službena stranica →</a>
+        </div>
+      </div>
+
+      <div class="park-card">
+        <div class="park-img">
+          <img src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=600&q=80" alt="Paklenica">
+          <div class="park-number">4</div>
+          <div class="park-region-badge">Zadar</div>
+        </div>
+        <div class="park-body">
+          <div class="park-tag">🧗 Alpinistički centar</div>
+          <h2 class="park-name">Paklenica</h2>
+          <p class="park-desc">Dva kaniona Velebitskog masiva. Europski centar alpinizma s više od 400 označenih smjerova na vapnenačkim stijenama.</p>
+          <div class="park-facts">
+            <span class="fact">📐 95 km²</span>
+            <span class="fact">🧗 400+ smjerova</span>
+            <span class="fact">🦅 Orao kliktaš</span>
+          </div>
+          <a href="https://np-paklenica.hr" target="_blank" class="park-link">Službena stranica →</a>
+        </div>
+      </div>
+
+      <div class="park-card">
+        <div class="park-img">
+          <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=80" alt="Risnjak">
+          <div class="park-number">5</div>
+          <div class="park-region-badge">Gorski kotar</div>
+        </div>
+        <div class="park-body">
+          <div class="park-tag">🐾 Divlje životinje</div>
+          <h2 class="park-name">Risnjak</h2>
+          <p class="park-desc">Dom risa, medvjeda i vuka. Gorski kotar s gustim šumama bukve i jele, idealan za trekking i promatranje divljači.</p>
+          <div class="park-facts">
+            <span class="fact">📐 64 km²</span>
+            <span class="fact">🐆 Ris, medvjed, vuk</span>
+            <span class="fact">🏔️ 1528m visine</span>
+          </div>
+          <a href="https://np-risnjak.hr" target="_blank" class="park-link">Službena stranica →</a>
+        </div>
+      </div>
+
+      <div class="park-card">
+        <div class="park-img">
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80" alt="Sjeverni Velebit">
+          <div class="park-number">6</div>
+          <div class="park-region-badge">Velebit</div>
+        </div>
+        <div class="park-body">
+          <div class="park-tag">🌿 UNESCO rezervat</div>
+          <h2 class="park-name">Sjeverni Velebit</h2>
+          <p class="park-desc">Najmlađi nacionalni park, UNESCO-v rezervat biosfere. Dom Hajdučkih i Rožanskih kukova — kamenih divova koji oduzimaju dah.</p>
+          <div class="park-facts">
+            <span class="fact">📐 109 km²</span>
+            <span class="fact">🌺 2700+ biljnih vrsta</span>
+            <span class="fact">🦋 Endemske vrste</span>
+          </div>
+          <a href="https://np-sjeverni-velebit.hr" target="_blank" class="park-link">Službena stranica →</a>
+        </div>
+      </div>
+
+      <div class="park-card">
+        <div class="park-img">
+          <img src="https://images.unsplash.com/photo-Fh4DNarct54?w=600&q=80" alt="Brijuni"
+               onerror="this.src='https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80'">
+          <div class="park-number">7</div>
+          <div class="park-region-badge">Istra</div>
+        </div>
+        <div class="park-body">
+          <div class="park-tag">🦒 Egzotične životinje</div>
+          <h2 class="park-name">Brijuni</h2>
+          <p class="park-desc">Arhipelag od 14 otoka pred Pulom — nekad rezidencija Josipa Broza Tita. Rimske ruševine, safari park s egzotičnim životinjama.</p>
+          <div class="park-facts">
+            <span class="fact">📐 36 km²</span>
+            <span class="fact">🦒 Safari park</span>
+            <span class="fact">🏛️ Rimske ruševine</span>
+          </div>
+          <a href="https://np-brijuni.hr" target="_blank" class="park-link">Službena stranica →</a>
+        </div>
+      </div>
+
+      <div class="park-card">
+        <div class="park-img">
+          <img src="https://images.unsplash.com/photo-1644722614801-d7e4bd40c276?w=600&q=80" alt="Mljet">
+          <div class="park-number">8</div>
+          <div class="park-region-badge">Dalmacija</div>
+        </div>
+        <div class="park-body">
+          <div class="park-tag">🌊 Morska jezera</div>
+          <h2 class="park-name">Mljet</h2>
+          <p class="park-desc">Najzeleniji dalmatinski otok. Dva slana jezera usred bujne mediteranske šume s benediktinskim manastirom na otočiću.</p>
+          <div class="park-facts">
+            <span class="fact">📐 54 km²</span>
+            <span class="fact">🌊 2 slana jezera</span>
+            <span class="fact">⛪ Benediktinski manastir</span>
+          </div>
+          <a href="https://np-mljet.hr" target="_blank" class="park-link">Službena stranica →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="back-section">
+      <p>Otkrijte više o Hrvatskoj na našem portalu</p>
+      <a href="index.html" class="btn-back">← Povratak na OtkrijtHR</a>
+    </div>
+  </section>
+
+  <!-- AI CHAT PANEL -->
+  <aside class="chat-panel">
+    <div class="chat-header">
+      <h3>AI vodič po parkovima</h3>
+      <p>Pitajte sve o nacionalnim parkovima Hrvatske</p>
+      <div class="chat-ai-badge">AI · Uvijek dostupan</div>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg ai">
+        <div class="msg-avatar">AI</div>
+        <div class="msg-bubble">Pozdrav! 🌿 Pomognem vam saznati sve o nacionalnim parkovima Hrvatske. Koji park vas zanima?</div>
       </div>
     </div>
 
-    <div class="park-card">
-      <div class="park-img">
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Krka">
-        <div class="park-number">2</div>
-        <div class="park-region-badge">Dalmacija</div>
-      </div>
-      <div class="park-body">
-        <div class="park-tag">💧 Rijeka i slapovi</div>
-        <h2 class="park-name">Krka</h2>
-        <p class="park-desc">Sedam slapova rijeke Krke, od kojih je Skradinski buk najpoznatiji. Bogata historia — Rimljani, Turci, mlinovi. Jedino mjesto gdje je kupanje u parku bilo dozvoljeno.</p>
-        <div class="park-facts">
-          <span class="fact">📐 109 km²</span>
-          <span class="fact">🌊 7 slapova</span>
-          <span class="fact">🏛️ Rimske ruševine</span>
-        </div>
-        <a href="https://np-krka.hr" target="_blank" class="park-link">Službena stranica →</a>
+    <div class="quick-questions">
+      <div class="quick-label">Brza pitanja</div>
+      <div class="quick-btns">
+        <button class="quick-btn" onclick="sendQuick('Koji nacionalni park je najljepši za posjetiti s obitelji?')">👨‍👩‍👧 Obitelji</button>
+        <button class="quick-btn" onclick="sendQuick('Koji park je najbolji za planinarenje?')">🥾 Planinarenje</button>
+        <button class="quick-btn" onclick="sendQuick('Koliko košta ulaznica za Plitvička jezera?')">💰 Cijene</button>
+        <button class="quick-btn" onclick="sendQuick('Kada je najbolje posjetiti nacionalne parkove Hrvatske?')">📅 Kada ići</button>
+        <button class="quick-btn" onclick="sendQuick('Koji park je dobar za ronjenje i nautiku?')">🤿 Ronjenje</button>
       </div>
     </div>
 
-    <div class="park-card">
-      <div class="park-img">
-        <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=80" alt="Kornati">
-        <div class="park-number">3</div>
-        <div class="park-region-badge">Dalmacija</div>
-      </div>
-      <div class="park-body">
-        <div class="park-tag">⛵ Nautički raj</div>
-        <h2 class="park-name">Kornati</h2>
-        <p class="park-desc">Labirint od 89 otoka, otočića i grebena — jedni od najgušće raspoređenih otoka na Mediteranu. Raj za jedriličare i ronjenje u kristalnom moru bez premca.</p>
-        <div class="park-facts">
-          <span class="fact">📐 220 km²</span>
-          <span class="fact">🏝️ 89 otoka</span>
-          <span class="fact">🤿 Ronjenje</span>
-        </div>
-        <a href="https://np-kornati.hr" target="_blank" class="park-link">Službena stranica →</a>
-      </div>
+    <div class="chat-input-area">
+      <input class="chat-input" id="chatInput" type="text" placeholder="Pitajte o parkovima..."
+             onkeydown="if(event.key==='Enter') sendMessage()">
+      <button class="chat-send" onclick="sendMessage()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
     </div>
+  </aside>
 
-    <div class="park-card">
-      <div class="park-img">
-        <img src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=600&q=80" alt="Paklenica">
-        <div class="park-number">4</div>
-        <div class="park-region-badge">Zadar</div>
-      </div>
-      <div class="park-body">
-        <div class="park-tag">🧗 Alpinistički centar</div>
-        <h2 class="park-name">Paklenica</h2>
-        <p class="park-desc">Dva kaniona Velebitskog masiva — Velika i Mala Paklenica. Europski centar alpinizma s više od 400 označenih smjerova na vapnenačkim stijenama.</p>
-        <div class="park-facts">
-          <span class="fact">📐 95 km²</span>
-          <span class="fact">🧗 400+ smjerova</span>
-          <span class="fact">🦅 Orao kliktaš</span>
-        </div>
-        <a href="https://np-paklenica.hr" target="_blank" class="park-link">Službena stranica →</a>
-      </div>
-    </div>
-
-    <div class="park-card">
-      <div class="park-img">
-        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=80" alt="Risnjak">
-        <div class="park-number">5</div>
-        <div class="park-region-badge">Gorski kotar</div>
-      </div>
-      <div class="park-body">
-        <div class="park-tag">🐾 Divlje životinje</div>
-        <h2 class="park-name">Risnjak</h2>
-        <p class="park-desc">Najhladniji i najvlažniji dio Hrvatske — dom risa, medvjeda i vuka. Gorski kotar s gustim šumama bukve i jele, idealan za trekking i promatranje divljači.</p>
-        <div class="park-facts">
-          <span class="fact">📐 64 km²</span>
-          <span class="fact">🐆 Ris, medvjed, vuk</span>
-          <span class="fact">🏔️ 1528m visine</span>
-        </div>
-        <a href="https://np-risnjak.hr" target="_blank" class="park-link">Službena stranica →</a>
-      </div>
-    </div>
-
-    <div class="park-card">
-      <div class="park-img">
-        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80" alt="Sjeverni Velebit">
-        <div class="park-number">6</div>
-        <div class="park-region-badge">Velebit</div>
-      </div>
-      <div class="park-body">
-        <div class="park-tag">🌿 UNESCO rezervat</div>
-        <h2 class="park-name">Sjeverni Velebit</h2>
-        <p class="park-desc">Najmlađi nacionalni park, proglašen 1999. UNESCO-v rezervat biosfere. Dom Hajdučkih i Rožanskih kukova — kamenih divova koji oduzimaju dah.</p>
-        <div class="park-facts">
-          <span class="fact">📐 109 km²</span>
-          <span class="fact">🌺 2700+ biljnih vrsta</span>
-          <span class="fact">🦋 Endemske vrste</span>
-        </div>
-        <a href="https://np-sjeverni-velebit.hr" target="_blank" class="park-link">Službena stranica →</a>
-      </div>
-    </div>
-
-    <div class="park-card">
-      <div class="park-img">
-        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80" alt="Brijuni">
-        <div class="park-number">7</div>
-        <div class="park-region-badge">Istra</div>
-      </div>
-      <div class="park-body">
-        <div class="park-tag">🦒 Egzotične životinje</div>
-        <h2 class="park-name">Brijuni</h2>
-        <p class="park-desc">Arhipelag od 14 otoka pred Pulom — nekad rezidencija Josipa Broza Tita. Rimske ruševine, safari park s egzotičnim životinjama i netaknutom istarskom prirodom.</p>
-        <div class="park-facts">
-          <span class="fact">📐 36 km²</span>
-          <span class="fact">🦒 Safari park</span>
-          <span class="fact">🏛️ Rimske ruševine</span>
-        </div>
-        <a href="https://np-brijuni.hr" target="_blank" class="park-link">Službena stranica →</a>
-      </div>
-    </div>
-
-    <div class="park-card">
-      <div class="park-img">
-        <img src="https://images.unsplash.com/photo-1571367034861-e6729ad9c2d5?w=600&q=80" alt="Mljet">
-        <div class="park-number">8</div>
-        <div class="park-region-badge">Dalmacija</div>
-      </div>
-      <div class="park-body">
-        <div class="park-tag">🌊 Morska jezera</div>
-        <h2 class="park-name">Mljet</h2>
-        <p class="park-desc">Najzeleniji dalmatinski otok. Legenda kaže da je Homer ovdje smjestio nymfu Kalipso. Dva slana jezera usred bujne mediteranske šume s benediktinskim manastirom na otočiću.</p>
-        <div class="park-facts">
-          <span class="fact">📐 54 km²</span>
-          <span class="fact">🌊 2 slana jezera</span>
-          <span class="fact">⛪ Benediktinski manastir</span>
-        </div>
-        <a href="https://np-mljet.hr" target="_blank" class="park-link">Službena stranica →</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="back-section">
-  <p>Otkrijte više o Hrvatskoj na našem portalu</p>
-  <a href="hrvatska-portal.html" class="btn-back">← Povratak na OtkrijtHR</a>
 </div>
 
 <script>
+  const messagesDiv = document.getElementById('chatMessages');
+  const input = document.getElementById('chatInput');
+
+  function addMessage(text, sender) {
+    const msg = document.createElement('div');
+    msg.className = `msg ${sender}`;
+    const avatar = document.createElement('div');
+    avatar.className = 'msg-avatar';
+    avatar.textContent = sender === 'ai' ? 'AI' : 'Vi';
+    const bubble = document.createElement('div');
+    bubble.className = 'msg-bubble';
+    bubble.textContent = text;
+    msg.appendChild(avatar);
+    msg.appendChild(bubble);
+    messagesDiv.appendChild(msg);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }
+
+  function showTyping() {
+    const typing = document.createElement('div');
+    typing.className = 'msg ai';
+    typing.id = 'typing';
+    typing.innerHTML = `
+      <div class="msg-avatar">AI</div>
+      <div class="msg-bubble">
+        <div class="typing-indicator">
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+        </div>
+      </div>`;
+    messagesDiv.appendChild(typing);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }
+
+  function removeTyping() {
+    const t = document.getElementById('typing');
+    if (t) t.remove();
+  }
+
+  async function callAI(userMessage) {
+    showTyping();
+    try {
+      const response = await fetch('/.netlify/functions/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: userMessage })
+      });
+      const data = await response.json();
+      removeTyping();
+      addMessage(data.reply || 'Žao mi je, pokušajte ponovo.', 'ai');
+    } catch (err) {
+      removeTyping();
+      addMessage('Trenutno ne mogu odgovoriti. Pokušajte za trenutak.', 'ai');
+    }
+  }
+
+  function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
+    addMessage(text, 'user');
+    input.value = '';
+    callAI(text);
+  }
+
+  function sendQuick(text) {
+    addMessage(text, 'user');
+    callAI(text);
+  }
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
