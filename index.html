@@ -257,6 +257,51 @@
     border: 1px solid rgba(201,168,76,0.2);
   }
 
+  @keyframes lineSlide {
+    0%   { transform: scaleX(0); transform-origin: left; opacity: 1; }
+    45%  { transform: scaleX(1); transform-origin: left; opacity: 1; }
+    55%  { transform: scaleX(1); transform-origin: right; opacity: 1; }
+    100% { transform: scaleX(0); transform-origin: right; opacity: 1; }
+  }
+
+  .stat-link {
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    transition: background 0.3s, border-color 0.3s, transform 0.3s;
+  }
+
+  .stat-link:hover {
+    background: rgba(250,250,248,0.98);
+    border-color: var(--gold);
+    transform: scale(1.05);
+  }
+
+  .signature-line {
+    width: 100%;
+    height: 20px;
+    margin-top: 6px;
+    display: block;
+  }
+
+  .signature-line path {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: drawSignature 2s ease-in-out 1s forwards, signatureLoop 4s ease-in-out 3.5s infinite;
+  }
+
+  @keyframes drawSignature {
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes signatureLoop {
+    0%, 100% { opacity: 1; stroke-dashoffset: 0; }
+    40% { opacity: 0; stroke-dashoffset: 0; }
+    41% { opacity: 0; stroke-dashoffset: 200; }
+    60% { opacity: 1; stroke-dashoffset: 200; }
+    100% { stroke-dashoffset: 0; }
+  }
+
   .stat-number {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.2rem;
@@ -272,6 +317,30 @@
     text-transform: uppercase;
     color: var(--text-light);
     margin-top: 4px;
+  }
+
+
+  /* SIGNATURE ANIMATION */
+  .signature-line {
+    width: 100px;
+    height: 16px;
+    display: block;
+    margin: 4px auto 2px;
+    overflow: visible;
+  }
+
+  .sig-path {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: drawSig 2s ease-in-out infinite;
+  }
+
+  @keyframes drawSig {
+    0% { stroke-dashoffset: 200; opacity: 0; }
+    20% { opacity: 1; }
+    60% { stroke-dashoffset: 0; opacity: 1; }
+    85% { stroke-dashoffset: 0; opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 0; }
   }
 
   /* KATEGORIJE */
@@ -1075,7 +1144,7 @@
 <section class="hero">
   <div class="hero-pattern"></div>
   <div class="hero-image-area">
-    <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1600&q=95" alt="Jadransko more, Hrvatska" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=90'">
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=95" alt="Jadransko more, Hrvatska" onerror="this.src='https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1600&q=90'">
     <div class="hero-image-overlay"></div>
   </div>
   <div class="hero-bg"></div>
