@@ -339,30 +339,21 @@
         <div class="chat-bubble">Bok! Koristite <strong>ChatGPT</strong> za besplatne savjete o putovanju u Hrvatsku. Upišite pitanje dolje ili odaberite neku od brzih tema! 😊</div>
       </div>
 
-      <div class="chatgpt-info">
-        <div class="chatgpt-logo">🤖</div>
-        <h4>ChatGPT — besplatno</h4>
-        <p>Vaše pitanje se šalje direktno ChatGPT-u koji će vam odgovoriti o plažama, smještaju, restoranima i svemu o Hrvatskoj.</p>
-        <a href="https://chatgpt.com" target="_blank" class="btn-chatgpt">Otvori ChatGPT →</a>
-      </div>
-
       <div class="chat-msg">
-        <div class="chat-avatar">💡</div>
-        <div class="chat-bubble">Savjet: Kliknite na jedno od brzih pitanja ispod ili upišite vlastito — ChatGPT će se otvoriti s vašim pitanjem već upisanim!</div>
+        <div class="chat-avatar">🌊</div>
+        <div class="chat-bubble">Bok! Ja sam vaš AI turistički vodič za Hrvatsku. 🇭🇷 Pitajte me o plažama, gradovima, smještaju, restoranima ili aktivnostima!</div>
       </div>
     </div>
 
     <div class="quick-section">
       <div class="quick-label">Brza pitanja</div>
       <div class="quick-questions">
-        <a class="quick-btn" href="#" onclick="askChatGPT('Koje plaže preporučuješ za obitelj s djecom u Hrvatskoj?')">👨‍👩‍👧 Obiteljske plaže</a>
-        <a class="quick-btn" href="#" onclick="askChatGPT('Koji su najljepši otoci u Hrvatskoj koje trebam posjetiti?')">🏝️ Najljepši otoci</a>
-        <a class="quick-btn" href="#" onclick="askChatGPT('Koji nacionalni park u Hrvatskoj vrijedi posjetiti i zašto?')">🌿 Nacionalni parkovi</a>
-        <a class="quick-btn" href="#" onclick="askChatGPT('Koji su najljepši gradovi na hrvatskoj obali Jadrana?')">🏛️ Gradovi na moru</a>
-        <a class="quick-btn" href="#" onclick="askChatGPT('Gdje jesti dobru svježu ribu u Dalmaciji? Preporuči restorane.')">🐟 Restorani ribe</a>
-        <a class="quick-btn" href="#" onclick="askChatGPT('Kada je najbolje vrijeme za putovanje u Hrvatsku i zašto?')">📅 Kada putovati</a>
-        <a class="quick-btn" href="#" onclick="askChatGPT('Koji su najromantičniji gradovi i mjesta u Hrvatskoj za par?')">❤️ Romantična mjesta</a>
-        <a class="quick-btn" href="#" onclick="askChatGPT('Koliko košta tjedan odmora u Hrvatskoj za 4 osobe?')">💰 Cijena odmora</a>
+        <button class="quick-btn" onclick="askQuick('Koje plaže preporučuješ za obitelj s djecom?')">👨‍👩‍👧 Obiteljske plaže</button>
+        <button class="quick-btn" onclick="askQuick('Koji su najljepši otoci u Hrvatskoj?')">🏝️ Najljepši otoci</button>
+        <button class="quick-btn" onclick="askQuick('Koji nacionalni park vrijedi posjetiti?')">🌿 Nacionalni parkovi</button>
+        <button class="quick-btn" onclick="askQuick('Najljepši gradovi na Jadranu?')">🏛️ Gradovi na moru</button>
+        <button class="quick-btn" onclick="askQuick('Gdje jesti dobru ribu u Dalmaciji?')">🐟 Restorani ribe</button>
+        <button class="quick-btn" onclick="askQuick('Kada je najbolje vrijeme za Hrvatsku?')">📅 Kada putovati</button>
       </div>
     </div>
 
@@ -375,28 +366,77 @@
 </div>
 
 <script>
-  function askChatGPT(question) {
-    const fullQ = 'Ja planiram putovanje u Hrvatsku. ' + question;
-    const url = 'https://chatgpt.com/?q=' + encodeURIComponent(fullQ);
-    window.open(url, '_blank');
-    return false;
+  const API_KEY = 'YOUR_API_KEY';
+  const chatInput = document.getElementById('chatInput');
+  const chatSend = document.getElementById('chatSend');
+  const chatMessages = document.getElementById('chatMessages');
+  let history = [];
+
+  function addMessage(text, isUser) {
+    const msg = document.createElement('div');
+    msg.className = `chat-msg ${isUser ? 'user' : 'bot'}`;
+    msg.innerHTML = `
+      <div class="chat-avatar">${isUser ? '👤' : '🌊'}</div>
+      <div class="chat-bubble">${text}</div>
+    `;
+    chatMessages.appendChild(msg);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    return msg;
   }
 
-  document.getElementById('chatSend').addEventListener('click', () => {
-    const text = document.getElementById('chatInput').value.trim();
-    if (!text) return;
-    askChatGPT(text);
-    document.getElementById('chatInput').value = '';
-  });
+  function addTyping() {
+    const msg = document.createElement('div');
+    msg.className = 'chat-msg bot';
+    msg.id = 'typing';
+    msg.innerHTML = `<div class="chat-avatar">🌊</div><div class="chat-bubble">●●●</div>`;
+    chatMessages.appendChild(msg);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
 
-  document.getElementById('chatInput').addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      const text = e.target.value.trim();
-      if (!text) return;
-      askChatGPT(text);
-      e.target.value = '';
+  function removeTyping() {
+    const t = document.getElementById('typing');
+    if (t) t.remove();
+  }
+
+  async function sendMessage(text) {
+    if (!text) text = chatInput.value.trim();
+    if (!text) return;
+    chatSend.disabled = true;
+    addMessage(text, true);
+    chatInput.value = '';
+    history.push({ role: 'user', content: text });
+    addTyping();
+    try {
+      const res = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + API_KEY
+        },
+        body: JSON.stringify({
+          model: 'gpt-4o-mini',
+          messages: [
+            { role: 'system', content: 'Ti si turistički asistent za Hrvatsku na portalu OtkrijtHR. Odgovaraj kratko i korisno na hrvatskom jeziku. Daj konkretne preporuke o plažama, smještaju, restoranima i aktivnostima.' },
+            ...history
+          ],
+          max_tokens: 500
+        })
+      });
+      const data = await res.json();
+      const reply = data.choices[0].message.content;
+      history.push({ role: 'assistant', content: reply });
+      removeTyping();
+      addMessage(reply, false);
+    } catch (err) {
+      removeTyping();
+      addMessage('Ups, došlo je do greške. Pokušajte ponovno! 😊', false);
     }
-  });
+    chatSend.disabled = false;
+  }
+
+  function askQuick(q) { sendMessage(q); }
+  chatSend.addEventListener('click', () => sendMessage());
+  chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
 </script>
 
 </body>
