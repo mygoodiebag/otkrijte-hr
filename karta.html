@@ -14,7 +14,6 @@
     --gold-light: #E8C97A;
     --sea: #2A7FA8;
     --sea-dark: #1A5F80;
-    --sea-light: #5BB3D4;
     --text-dark: #1C1C1A;
     --text-mid: #4A4A46;
     --text-light: #8A8A84;
@@ -31,7 +30,6 @@
     flex-direction: column;
   }
 
-  /* NAV */
   nav {
     height: 64px;
     padding: 0 40px;
@@ -42,7 +40,6 @@
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(201,168,76,0.2);
     flex-shrink: 0;
-    z-index: 100;
   }
 
   .logo {
@@ -53,12 +50,6 @@
     text-decoration: none;
   }
   .logo span { color: var(--gold); }
-
-  .nav-right {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
 
   .nav-back {
     display: flex;
@@ -74,25 +65,10 @@
   }
   .nav-back:hover { color: var(--sea); }
 
-  .nav-title {
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-light);
-  }
-
-  /* MAIN LAYOUT */
   .main {
     flex: 1;
     display: grid;
     grid-template-columns: 1fr 380px;
-    overflow: hidden;
-  }
-
-  /* KARTA */
-  .map-section {
-    position: relative;
     overflow: hidden;
   }
 
@@ -135,7 +111,6 @@
     color: var(--text-dark);
     line-height: 1.1;
   }
-
   .chat-panel-title em { font-style: italic; color: var(--sea); }
 
   .chat-panel-desc {
@@ -145,7 +120,7 @@
     line-height: 1.5;
   }
 
-  /* CHAT MESSAGES */
+  /* INFO PORUKE */
   .chat-messages {
     flex: 1;
     overflow-y: auto;
@@ -153,11 +128,9 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    scroll-behavior: smooth;
   }
 
   .chat-messages::-webkit-scrollbar { width: 4px; }
-  .chat-messages::-webkit-scrollbar-track { background: transparent; }
   .chat-messages::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 2px; }
 
   .chat-msg {
@@ -166,21 +139,17 @@
     align-items: flex-start;
   }
 
-  .chat-msg.user { flex-direction: row-reverse; }
-
   .chat-avatar {
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background: var(--sea);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     flex-shrink: 0;
   }
-
-  .chat-msg.user .chat-avatar { background: var(--gold); }
 
   .chat-bubble {
     padding: 10px 14px;
@@ -188,58 +157,87 @@
     border-bottom-left-radius: 4px;
     font-size: 0.82rem;
     line-height: 1.6;
-    max-width: 85%;
     background: var(--cream);
     color: var(--text-dark);
     border: 1px solid var(--sand);
   }
 
-  .chat-msg.user .chat-bubble {
-    background: var(--sea);
+  .chatgpt-info {
+    background: linear-gradient(135deg, #10a37f15, #10a37f08);
+    border: 1px solid #10a37f40;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 8px 0;
+    text-align: center;
+  }
+
+  .chatgpt-logo {
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+
+  .chatgpt-info h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+
+  .chatgpt-info p {
+    font-size: 0.75rem;
+    color: var(--text-mid);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .btn-chatgpt {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: #10a37f;
     color: white;
-    border-color: var(--sea);
-    border-radius: 12px;
-    border-bottom-right-radius: 4px;
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 20px;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
   }
-
-  .typing-indicator {
-    display: flex;
-    gap: 4px;
-    padding: 10px 14px;
-    background: var(--cream);
-    border: 1px solid var(--sand);
-    border-radius: 12px;
-    border-bottom-left-radius: 4px;
-    width: fit-content;
-  }
-
-  .typing-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--text-light);
-    animation: typingBounce 1.2s infinite;
-  }
-
-  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-
-  @keyframes typingBounce {
-    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
-    30% { transform: translateY(-6px); opacity: 1; }
+  .btn-chatgpt:hover {
+    background: #0d8c6d;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(16,163,127,0.3);
   }
 
   /* QUICK QUESTIONS */
-  .quick-questions {
-    padding: 0 16px 12px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+  .quick-section {
+    padding: 12px 16px;
+    border-top: 1px solid var(--sand);
     flex-shrink: 0;
   }
 
+  .quick-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 8px;
+  }
+
+  .quick-questions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
   .quick-btn {
-    padding: 5px 12px;
+    padding: 6px 12px;
     font-size: 0.7rem;
     font-weight: 500;
     background: var(--cream);
@@ -249,15 +247,16 @@
     cursor: pointer;
     transition: all 0.2s;
     font-family: 'Outfit', sans-serif;
+    text-decoration: none;
+    display: inline-block;
   }
-
   .quick-btn:hover {
-    background: var(--sea);
-    border-color: var(--sea);
+    background: #10a37f;
+    border-color: #10a37f;
     color: white;
   }
 
-  /* CHAT INPUT */
+  /* INPUT */
   .chat-input-area {
     padding: 12px 16px;
     border-top: 1px solid var(--sand);
@@ -279,14 +278,13 @@
     outline: none;
     transition: border-color 0.3s;
   }
-
-  .chat-input:focus { border-color: var(--sea); background: white; }
+  .chat-input:focus { border-color: #10a37f; background: white; }
   .chat-input::placeholder { color: var(--text-light); }
 
   .chat-send {
     width: 38px;
     height: 38px;
-    background: var(--sea);
+    background: #10a37f;
     color: white;
     border: none;
     border-radius: 50%;
@@ -298,31 +296,23 @@
     justify-content: center;
     flex-shrink: 0;
   }
+  .chat-send:hover { background: #0d8c6d; transform: scale(1.05); }
 
-  .chat-send:hover { background: var(--sea-dark); transform: scale(1.05); }
-  .chat-send:disabled { background: var(--sand); cursor: not-allowed; transform: none; }
-
-  /* RESPONSIVE */
   @media (max-width: 900px) {
     html, body { overflow: auto; }
     .main { grid-template-columns: 1fr; overflow: visible; }
     .map-section { height: 50vh; }
-    .chat-panel { height: 500px; }
+    .chat-panel { height: auto; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="index.html" class="logo">Otkrijte<span>HR</span></a>
-  <div class="nav-right">
-    <span class="nav-title">🗺️ Karta Hrvatske</span>
-    <a href="index.html" class="nav-back">← Povratak</a>
-  </div>
+  <a href="index.html" class="nav-back">← Povratak na početnu</a>
 </nav>
 
-<!-- MAIN -->
 <div class="main">
 
   <!-- KARTA -->
@@ -338,29 +328,46 @@
   <!-- CHAT PANEL -->
   <div class="chat-panel">
     <div class="chat-panel-header">
-      <div class="chat-panel-tag">✦ AI Turistički asistent</div>
-      <h2 class="chat-panel-title">Pitaj za <em>savjet</em></h2>
-      <p class="chat-panel-desc">Postavite pitanje o destinacijama, smještaju, restoranima ili aktivnostima u Hrvatskoj.</p>
+      <div class="chat-panel-tag">✦ AI Turistički savjetnik</div>
+      <h2 class="chat-panel-title">Pitaj <em>ChatGPT</em></h2>
+      <p class="chat-panel-desc">Besplatni AI asistent za savjete o putovanju u Hrvatsku.</p>
     </div>
 
-    <div class="chat-messages" id="chatMessages">
-      <div class="chat-msg bot">
+    <div class="chat-messages">
+      <div class="chat-msg">
         <div class="chat-avatar">🌊</div>
-        <div class="chat-bubble">Bok! Ja sam vaš turistički vodič za Hrvatsku. 🇭🇷<br><br>Pitajte me o plažama, gradovima, nacionalnim parkovima, smještaju ili restoranima — tu sam da pomognem!</div>
+        <div class="chat-bubble">Bok! Koristite <strong>ChatGPT</strong> za besplatne savjete o putovanju u Hrvatsku. Upišite pitanje dolje ili odaberite neku od brzih tema! 😊</div>
+      </div>
+
+      <div class="chatgpt-info">
+        <div class="chatgpt-logo">🤖</div>
+        <h4>ChatGPT — besplatno</h4>
+        <p>Vaše pitanje se šalje direktno ChatGPT-u koji će vam odgovoriti o plažama, smještaju, restoranima i svemu o Hrvatskoj.</p>
+        <a href="https://chatgpt.com" target="_blank" class="btn-chatgpt">Otvori ChatGPT →</a>
+      </div>
+
+      <div class="chat-msg">
+        <div class="chat-avatar">💡</div>
+        <div class="chat-bubble">Savjet: Kliknite na jedno od brzih pitanja ispod ili upišite vlastito — ChatGPT će se otvoriti s vašim pitanjem već upisanim!</div>
       </div>
     </div>
 
-    <div class="quick-questions">
-      <button class="quick-btn" onclick="askQuick('Koje plaže preporučuješ za obitelj?')">👨‍👩‍👧 Obiteljske plaže</button>
-      <button class="quick-btn" onclick="askQuick('Koji su najljepši otoci u Hrvatskoj?')">🏝️ Najljepši otoci</button>
-      <button class="quick-btn" onclick="askQuick('Preporuči mi nacionalni park za posjetiti')">🌿 Nacionalni parkovi</button>
-      <button class="quick-btn" onclick="askQuick('Koji su najljepši gradovi na Jadranu?')">🏛️ Gradovi na moru</button>
-      <button class="quick-btn" onclick="askQuick('Gdje jesti dobru ribu u Dalmaciji?')">🐟 Restorani ribe</button>
-      <button class="quick-btn" onclick="askQuick('Kada je najbolje vrijeme za posjet Hrvatskoj?')">📅 Kada putovati</button>
+    <div class="quick-section">
+      <div class="quick-label">Brza pitanja</div>
+      <div class="quick-questions">
+        <a class="quick-btn" href="#" onclick="askChatGPT('Koje plaže preporučuješ za obitelj s djecom u Hrvatskoj?')">👨‍👩‍👧 Obiteljske plaže</a>
+        <a class="quick-btn" href="#" onclick="askChatGPT('Koji su najljepši otoci u Hrvatskoj koje trebam posjetiti?')">🏝️ Najljepši otoci</a>
+        <a class="quick-btn" href="#" onclick="askChatGPT('Koji nacionalni park u Hrvatskoj vrijedi posjetiti i zašto?')">🌿 Nacionalni parkovi</a>
+        <a class="quick-btn" href="#" onclick="askChatGPT('Koji su najljepši gradovi na hrvatskoj obali Jadrana?')">🏛️ Gradovi na moru</a>
+        <a class="quick-btn" href="#" onclick="askChatGPT('Gdje jesti dobru svježu ribu u Dalmaciji? Preporuči restorane.')">🐟 Restorani ribe</a>
+        <a class="quick-btn" href="#" onclick="askChatGPT('Kada je najbolje vrijeme za putovanje u Hrvatsku i zašto?')">📅 Kada putovati</a>
+        <a class="quick-btn" href="#" onclick="askChatGPT('Koji su najromantičniji gradovi i mjesta u Hrvatskoj za par?')">❤️ Romantična mjesta</a>
+        <a class="quick-btn" href="#" onclick="askChatGPT('Koliko košta tjedan odmora u Hrvatskoj za 4 osobe?')">💰 Cijena odmora</a>
+      </div>
     </div>
 
     <div class="chat-input-area">
-      <input type="text" class="chat-input" id="chatInput" placeholder="Npr. Koja je najljepša plaža na Hvaru?" />
+      <input type="text" class="chat-input" id="chatInput" placeholder="Upiši pitanje o Hrvatskoj..." />
       <button class="chat-send" id="chatSend">➤</button>
     </div>
   </div>
@@ -368,92 +375,30 @@
 </div>
 
 <script>
-  const chatInput = document.getElementById('chatInput');
-  const chatSend = document.getElementById('chatSend');
-  const chatMessages = document.getElementById('chatMessages');
-
-  let conversationHistory = [];
-
-  function addMessage(text, isUser) {
-    const msg = document.createElement('div');
-    msg.className = `chat-msg ${isUser ? 'user' : 'bot'}`;
-    msg.innerHTML = `
-      <div class="chat-avatar">${isUser ? '👤' : '🌊'}</div>
-      <div class="chat-bubble">${text}</div>
-    `;
-    chatMessages.appendChild(msg);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-    return msg;
+  function askChatGPT(question) {
+    const fullQ = 'Ja planiram putovanje u Hrvatsku. ' + question;
+    const url = 'https://chatgpt.com/?q=' + encodeURIComponent(fullQ);
+    window.open(url, '_blank');
+    return false;
   }
 
-  function addTyping() {
-    const msg = document.createElement('div');
-    msg.className = 'chat-msg bot';
-    msg.id = 'typingIndicator';
-    msg.innerHTML = `
-      <div class="chat-avatar">🌊</div>
-      <div class="typing-indicator">
-        <div class="typing-dot"></div>
-        <div class="typing-dot"></div>
-        <div class="typing-dot"></div>
-      </div>
-    `;
-    chatMessages.appendChild(msg);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-
-  function removeTyping() {
-    const typing = document.getElementById('typingIndicator');
-    if (typing) typing.remove();
-  }
-
-  async function sendMessage(text) {
-    if (!text) text = chatInput.value.trim();
+  document.getElementById('chatSend').addEventListener('click', () => {
+    const text = document.getElementById('chatInput').value.trim();
     if (!text) return;
+    askChatGPT(text);
+    document.getElementById('chatInput').value = '';
+  });
 
-    chatSend.disabled = true;
-    addMessage(text, true);
-    chatInput.value = '';
-
-    conversationHistory.push({ role: 'user', content: text });
-
-    addTyping();
-
-    try {
-      const response = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          system: 'Ti si turistički asistent za Hrvatsku koji radi na web portalu OtkrijtHR.hr. Odgovaraj kratko, korisno i prijateljski na hrvatskom jeziku. Fokusiraj se na plaže, smještaj, restorane, putovanje, nacionalne parkove i aktivnosti u Hrvatskoj. Daj konkretne preporuke s imenima mjesta, restorana i atrakcija. Koristi emoji gdje je prikladno.',
-          messages: conversationHistory
-        })
-      });
-
-      const data = await response.json();
-      const reply = data.content[0].text;
-
-      conversationHistory.push({ role: 'assistant', content: reply });
-
-      removeTyping();
-      addMessage(reply, false);
-    } catch (err) {
-      removeTyping();
-      addMessage('Ups, došlo je do greške. Pokušajte ponovno! 😊', false);
+  document.getElementById('chatInput').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      const text = e.target.value.trim();
+      if (!text) return;
+      askChatGPT(text);
+      e.target.value = '';
     }
-
-    chatSend.disabled = false;
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-
-  function askQuick(question) {
-    sendMessage(question);
-  }
-
-  chatSend.addEventListener('click', () => sendMessage());
-  chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+  });
 </script>
 
+<script src="//code.tidio.co/w6y5dtrysptm3ubvt5cam2ca99zqisc7.js" async></script>
 </body>
 </html>
