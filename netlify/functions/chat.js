@@ -8,7 +8,7 @@ exports.handler = async function(event) {
 
     // Podržava oba formata: { messages } i { message, context }
     let messages;
-    let systemContent = 'Ti si turistički asistent za Hrvatsku na portalu OtkrijtHR. Odgovaraj kratko i korisno na hrvatskom jeziku. Daj konkretne preporuke o plažama, smještaju, restoranima i aktivnostima.';
+    let systemContent = 'Ti si turistički asistent za Hrvatsku na portalu OtkrijtHR. Odgovaraj na istom jeziku na kojem te korisnik pita. Daj konkretne preporuke o plažama, smještaju, restoranima i aktivnostima. Budi kratak i koristan.';
 
     if (body.messages && Array.isArray(body.messages)) {
       messages = body.messages;
