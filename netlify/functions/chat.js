@@ -2,14 +2,10 @@ exports.handler = async function(event) {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
-
   try {
     const body = JSON.parse(event.body);
-
-    // Podržava oba formata: { messages } i { message, context }
     let messages;
-    let systemContent = 'Ti si turistički asistent za Hrvatsku na portalu OtkrijtHR. Odgovaraj na istom jeziku na kojem te korisnik pita. Daj konkretne preporuke o plažama, smještaju, restoranima i aktivnostima. Budi kratak i koristan.';
-
+    let systemContent = 'You are a tourism assistant for Croatia on the OtkrijtHR portal. IMPORTANT: Always respond in the same language the user writes in. If the user writes in English, respond in English. If the user writes in Croatian, respond in Croatian. If the user writes in German, respond in German. And so on for any language. Give concrete recommendations about beaches, accommodation, restaurants and activities. Be brief and helpful.';
     if (body.messages && Array.isArray(body.messages)) {
       messages = body.messages;
     } else if (body.message) {
@@ -18,7 +14,6 @@ exports.handler = async function(event) {
     } else {
       return { statusCode: 400, body: JSON.stringify({ error: 'No message provided' }) };
     }
-
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -34,16 +29,13 @@ exports.handler = async function(event) {
         max_tokens: 500
       })
     });
-
     const data = await response.json();
-    const reply = data.choices?.[0]?.message?.content || 'Žao mi je, pokušajte ponovo.';
-
+    const reply = data.choices?.[0]?.message?.content || 'Sorry, please try again.';
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ reply, choices: data.choices })
     };
-
   } catch (err) {
     return {
       statusCode: 500,
