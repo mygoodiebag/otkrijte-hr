@@ -808,8 +808,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          message: userMessage,
-          context: 'Ti si stručni turistički vodič za hrvatske otoke. Odgovaraj na hrvatskom jeziku, kratko i korisno (max 3 rečenice). Fokusiraj se na praktične savjete o odabiru otoka, putovanju, smještaju i atrakcijama.'
+          message: 'Ti si turistički vodič za hrvatske otoke. Odgovaraj na hrvatskom, kratko (max 3 rečenice). ' + userMessage
         })
       });
       const data = await response.json();
