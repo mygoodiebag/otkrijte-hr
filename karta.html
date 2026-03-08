@@ -366,7 +366,6 @@
 </div>
 
 <script>
-  const API_KEY = 'YOUR_API_KEY';
   const chatInput = document.getElementById('chatInput');
   const chatSend = document.getElementById('chatSend');
   const chatMessages = document.getElementById('chatMessages');
@@ -407,20 +406,10 @@
     history.push({ role: 'user', content: text });
     addTyping();
     try {
-      const res = await fetch('https://api.openai.com/v1/chat/completions', {
+      const res = await fetch('/.netlify/functions/chat', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + API_KEY
-        },
-        body: JSON.stringify({
-          model: 'gpt-4o-mini',
-          messages: [
-            { role: 'system', content: 'Ti si turistički asistent za Hrvatsku na portalu OtkrijtHR. Odgovaraj kratko i korisno na hrvatskom jeziku. Daj konkretne preporuke o plažama, smještaju, restoranima i aktivnostima.' },
-            ...history
-          ],
-          max_tokens: 500
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history })
       });
       const data = await res.json();
       const reply = data.choices[0].message.content;
