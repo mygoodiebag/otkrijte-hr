@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nacionalni Parkovi Hrvatske – OtkrijtHR</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #FAFAF8;
+    --cream: #F5F2EC;
+    --sand: #E8E0D0;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --green: #2A6B4A;
+    --green-light: #4A9B6F;
+    --text-dark: #1C1C1A;
+    --text-mid: #4A4A46;
+    --text-light: #8A8A84;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(250,250,248,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-decoration: none;
+  }
+  .logo span { color: var(--gold); }
+
+  .nav-back {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    transition: color 0.3s;
+  }
+  .nav-back:hover { color: var(--green); }
+
+  .hero {
+    min-height: 55vh;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .hero img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+    animation: slowZoom 14s ease-out forwards;
+  }
+
+  @keyframes slowZoom {
+    from { transform: scale(1.06); }
+    to { transform: scale(1.0); }
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15,35,20,0.85) 0%, rgba(15,35,20,0.3) 50%, transparent 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 60px 60px;
+    width: 100%;
+  }
+
+  .breadcrumb {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 12px;
+  }
+  .breadcrumb a { color: var(--gold-light); text-decoration: none; }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 300;
+    color: white;
+    line-height: 1.05;
+    margin-bottom: 12px;
+  }
+  .hero-title em { font-style: italic; color: #A8D5B0; }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.75);
+    max-width: 520px;
+    line-height: 1.6;
+  }
+
+  .intro-strip {
+    background: var(--green);
+    padding: 24px 60px;
+  }
+  .intro-strip p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+  }
+  .intro-strip p strong { color: white; }
+
+  .parkovi {
+    padding: 80px 60px;
+    background: var(--white);
+  }
+
+  .parkovi-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3px;
+    background: var(--sand);
+  }
+
+  .park-card {
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 210px;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
+  }
+
+  .park-card.visible { opacity: 1; transform: translateY(0); }
+  .park-card:hover { box-shadow: 0 8px 40px rgba(28,28,26,0.15); z-index: 2; }
+
+  .park-img {
+    position: relative;
+    overflow: hidden;
+  }
+  .park-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .park-card:hover .park-img img { transform: scale(1.06); }
+
+  .park-number {
+    position: absolute;
+    top: 14px; left: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: white;
+    line-height: 1;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  }
+
+  .park-region-badge {
+    position: absolute;
+    bottom: 12px; left: 12px;
+    padding: 4px 10px;
+    background: rgba(42,107,74,0.9);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: white;
+    border-radius: 20px;
+  }
+
+  .park-body {
+    padding: 26px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .park-tag {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .park-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+
+  .park-desc {
+    font-size: 0.82rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+
+  .park-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .fact {
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 3px 10px;
+    background: var(--cream);
+    color: var(--text-mid);
+    border-radius: 20px;
+  }
+
+  .park-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(42,107,74,0.3);
+    padding-bottom: 2px;
+    transition: all 0.3s;
+    width: fit-content;
+  }
+  .park-link:hover { color: var(--green-light); gap: 10px; }
+
+  .back-section {
+    padding: 60px;
+    background: var(--cream);
+    text-align: center;
+    border-top: 1px solid var(--sand);
+  }
+  .back-section p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 20px; }
+
+  .btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    background: var(--green);
+    color: white;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .btn-back:hover { background: #1d5038; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(42,107,74,0.3); }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .hero-content { padding: 0 24px 40px; }
+    .intro-strip { padding: 20px 24px; }
+    .parkovi { padding: 40px 24px; }
+    .parkovi-grid { grid-template-columns: 1fr; }
+    .park-card { grid-template-columns: 1fr; }
+    .park-img { height: 200px; }
+    .back-section { padding: 40px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="hrvatska-portal.html" class="logo">Otkrijte<span>HR</span></a>
+  <a href="hrvatska-portal.html" class="nav-back">← Povratak na početnu</a>
+</nav>
+
+<section class="hero">
+  <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=90" alt="Nacionalni parkovi Hrvatske">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="breadcrumb">
+      <a href="hrvatska-portal.html">OtkrijtHR</a> &nbsp;/&nbsp; Nacionalni parkovi
+    </div>
+    <h1 class="hero-title">8 Nacionalnih<br><em>parkova</em> Hrvatske</h1>
+    <p class="hero-subtitle">Hrvatska prirodna baština — od šumovitih planina do bistre rijeke i magičnih slapova.</p>
+  </div>
+</section>
+
+<div class="intro-strip">
+  <p>Hrvatska ima <strong>8 nacionalnih parkova</strong> koji zajedno pokrivaju više od <strong>1.000 km²</strong> zaštićene prirode. Svaki park je jedinstven — od karstnih jezera i slapova do stjenovitih morskih akvatorija i divljih planina.</p>
+</div>
+
+<section class="parkovi">
+  <div class="parkovi-grid">
+
+    <div class="park-card">
+      <div class="park-img">
+        <img src="https://images.unsplash.com/photo-1586348943529-beaae6c28db9?w=600&q=80" alt="Plitvička jezera">
+        <div class="park-number">1</div>
+        <div class="park-region-badge">Lika</div>
+      </div>
+      <div class="park-body">
+        <div class="park-tag">🏆 UNESCO baština</div>
+        <h2 class="park-name">Plitvička jezera</h2>
+        <p class="park-desc">16 terasastih jezera međusobno povezanih slapovima u nestvarnom okruženju prašume. Najposjećeniji park u Hrvatskoj i UNESCO-va svjetska baština od 1979.</p>
+        <div class="park-facts">
+          <span class="fact">📐 296 km²</span>
+          <span class="fact">💧 16 jezera</span>
+          <span class="fact">🌊 Slapovi do 78m</span>
+        </div>
+        <a href="https://np-plitvicka-jezera.hr" target="_blank" class="park-link">Službena stranica →</a>
+      </div>
+    </div>
+
+    <div class="park-card">
+      <div class="park-img">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Krka">
+        <div class="park-number">2</div>
+        <div class="park-region-badge">Dalmacija</div>
+      </div>
+      <div class="park-body">
+        <div class="park-tag">💧 Rijeka i slapovi</div>
+        <h2 class="park-name">Krka</h2>
+        <p class="park-desc">Sedam slapova rijeke Krke, od kojih je Skradinski buk najpoznatiji. Bogata historia — Rimljani, Turci, mlinovi. Jedino mjesto gdje je kupanje u parku bilo dozvoljeno.</p>
+        <div class="park-facts">
+          <span class="fact">📐 109 km²</span>
+          <span class="fact">🌊 7 slapova</span>
+          <span class="fact">🏛️ Rimske ruševine</span>
+        </div>
+        <a href="https://np-krka.hr" target="_blank" class="park-link">Službena stranica →</a>
+      </div>
+    </div>
+
+    <div class="park-card">
+      <div class="park-img">
+        <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=80" alt="Kornati">
+        <div class="park-number">3</div>
+        <div class="park-region-badge">Dalmacija</div>
+      </div>
+      <div class="park-body">
+        <div class="park-tag">⛵ Nautički raj</div>
+        <h2 class="park-name">Kornati</h2>
+        <p class="park-desc">Labirint od 89 otoka, otočića i grebena — jedni od najgušće raspoređenih otoka na Mediteranu. Raj za jedriličare i ronjenje u kristalnom moru bez premca.</p>
+        <div class="park-facts">
+          <span class="fact">📐 220 km²</span>
+          <span class="fact">🏝️ 89 otoka</span>
+          <span class="fact">🤿 Ronjenje</span>
+        </div>
+        <a href="https://np-kornati.hr" target="_blank" class="park-link">Službena stranica →</a>
+      </div>
+    </div>
+
+    <div class="park-card">
+      <div class="park-img">
+        <img src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=600&q=80" alt="Paklenica">
+        <div class="park-number">4</div>
+        <div class="park-region-badge">Zadar</div>
+      </div>
+      <div class="park-body">
+        <div class="park-tag">🧗 Alpinistički centar</div>
+        <h2 class="park-name">Paklenica</h2>
+        <p class="park-desc">Dva kaniona Velebitskog masiva — Velika i Mala Paklenica. Europski centar alpinizma s više od 400 označenih smjerova na vapnenačkim stijenama.</p>
+        <div class="park-facts">
+          <span class="fact">📐 95 km²</span>
+          <span class="fact">🧗 400+ smjerova</span>
+          <span class="fact">🦅 Orao kliktaš</span>
+        </div>
+        <a href="https://np-paklenica.hr" target="_blank" class="park-link">Službena stranica →</a>
+      </div>
+    </div>
+
+    <div class="park-card">
+      <div class="park-img">
+        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=80" alt="Risnjak">
+        <div class="park-number">5</div>
+        <div class="park-region-badge">Gorski kotar</div>
+      </div>
+      <div class="park-body">
+        <div class="park-tag">🐾 Divlje životinje</div>
+        <h2 class="park-name">Risnjak</h2>
+        <p class="park-desc">Najhladniji i najvlažniji dio Hrvatske — dom risa, medvjeda i vuka. Gorski kotar s gustim šumama bukve i jele, idealan za trekking i promatranje divljači.</p>
+        <div class="park-facts">
+          <span class="fact">📐 64 km²</span>
+          <span class="fact">🐆 Ris, medvjed, vuk</span>
+          <span class="fact">🏔️ 1528m visine</span>
+        </div>
+        <a href="https://np-risnjak.hr" target="_blank" class="park-link">Službena stranica →</a>
+      </div>
+    </div>
+
+    <div class="park-card">
+      <div class="park-img">
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80" alt="Sjeverni Velebit">
+        <div class="park-number">6</div>
+        <div class="park-region-badge">Velebit</div>
+      </div>
+      <div class="park-body">
+        <div class="park-tag">🌿 UNESCO rezervat</div>
+        <h2 class="park-name">Sjeverni Velebit</h2>
+        <p class="park-desc">Najmlađi nacionalni park, proglašen 1999. UNESCO-v rezervat biosfere. Dom Hajdučkih i Rožanskih kukova — kamenih divova koji oduzimaju dah.</p>
+        <div class="park-facts">
+          <span class="fact">📐 109 km²</span>
+          <span class="fact">🌺 2700+ biljnih vrsta</span>
+          <span class="fact">🦋 Endemske vrste</span>
+        </div>
+        <a href="https://np-sjeverni-velebit.hr" target="_blank" class="park-link">Službena stranica →</a>
+      </div>
+    </div>
+
+    <div class="park-card">
+      <div class="park-img">
+        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80" alt="Brijuni">
+        <div class="park-number">7</div>
+        <div class="park-region-badge">Istra</div>
+      </div>
+      <div class="park-body">
+        <div class="park-tag">🦒 Egzotične životinje</div>
+        <h2 class="park-name">Brijuni</h2>
+        <p class="park-desc">Arhipelag od 14 otoka pred Pulom — nekad rezidencija Josipa Broza Tita. Rimske ruševine, safari park s egzotičnim životinjama i netaknutom istarskom prirodom.</p>
+        <div class="park-facts">
+          <span class="fact">📐 36 km²</span>
+          <span class="fact">🦒 Safari park</span>
+          <span class="fact">🏛️ Rimske ruševine</span>
+        </div>
+        <a href="https://np-brijuni.hr" target="_blank" class="park-link">Službena stranica →</a>
+      </div>
+    </div>
+
+    <div class="park-card">
+      <div class="park-img">
+        <img src="https://images.unsplash.com/photo-1571367034861-e6729ad9c2d5?w=600&q=80" alt="Mljet">
+        <div class="park-number">8</div>
+        <div class="park-region-badge">Dalmacija</div>
+      </div>
+      <div class="park-body">
+        <div class="park-tag">🌊 Morska jezera</div>
+        <h2 class="park-name">Mljet</h2>
+        <p class="park-desc">Najzeleniji dalmatinski otok. Legenda kaže da je Homer ovdje smjestio nymfu Kalipso. Dva slana jezera usred bujne mediteranske šume s benediktinskim manastirom na otočiću.</p>
+        <div class="park-facts">
+          <span class="fact">📐 54 km²</span>
+          <span class="fact">🌊 2 slana jezera</span>
+          <span class="fact">⛪ Benediktinski manastir</span>
+        </div>
+        <a href="https://np-mljet.hr" target="_blank" class="park-link">Službena stranica →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="back-section">
+  <p>Otkrijte više o Hrvatskoj na našem portalu</p>
+  <a href="hrvatska-portal.html" class="btn-back">← Povratak na OtkrijtHR</a>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 100);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.park-card').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNESCO mjesta Hrvatske – OtkrijtHR</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #FAFAF8;
+    --cream: #F5F2EC;
+    --sand: #E8E0D0;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --sea: #2A7FA8;
+    --sea-dark: #1A5F80;
+    --unesco: #1B4F8A;
+    --unesco-light: #3A7BC8;
+    --text-dark: #1C1C1A;
+    --text-mid: #4A4A46;
+    --text-light: #8A8A84;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', sans-serif; background: var(--white); color: var(--text-dark); overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 60px; display: flex; justify-content: space-between; align-items: center;
+    background: rgba(250,250,248,0.95); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; letter-spacing: 0.05em; color: var(--text-dark); text-decoration: none; }
+  .logo span { color: var(--gold); }
+  .nav-back { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mid); transition: color 0.3s; }
+  .nav-back:hover { color: var(--unesco); }
+
+  .hero {
+    height: 60vh; min-height: 420px; position: relative; display: flex; align-items: flex-end; overflow: hidden;
+  }
+  .hero img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 50%;
+    animation: slowZoom 14s ease-out forwards;
+  }
+  @keyframes slowZoom { from { transform: scale(1.08); } to { transform: scale(1.0); } }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(10,20,50,0.85) 0%, rgba(10,20,50,0.2) 60%, transparent 100%);
+  }
+  .hero-content { position: relative; z-index: 2; padding: 0 60px 60px; }
+  .hero-tag {
+    display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 12px; padding: 5px 14px;
+    border: 1px solid rgba(232,201,122,0.4); border-radius: 20px; background: rgba(255,255,255,0.08); backdrop-filter: blur(4px);
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 300; color: white; line-height: 1.05; text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+  .hero-title em { font-style: italic; color: #8BB8E8; }
+  .hero-subtitle { font-size: 1rem; color: rgba(255,255,255,0.8); margin-top: 14px; max-width: 560px; line-height: 1.6; }
+
+  .intro {
+    padding: 70px 60px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .intro-text h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: var(--text-dark); line-height: 1.2; margin-bottom: 16px; }
+  .intro-text h2 em { font-style: italic; color: var(--unesco); }
+  .intro-text p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.8; }
+  .intro-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .intro-stat { padding: 24px; background: var(--cream); border-radius: 4px; border-left: 3px solid var(--unesco); }
+  .intro-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--unesco); }
+  .intro-stat-label { font-size: 0.78rem; color: var(--text-light); margin-top: 4px; }
+
+  .mjesta { padding: 40px 60px 100px; background: var(--cream); }
+  .mjesta h2 { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 40px; }
+
+  .mjesta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+
+  .mjesto-card {
+    background: var(--white); border-radius: 4px; overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); border: 1px solid transparent;
+  }
+  .mjesto-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(28,28,26,0.1); border-color: rgba(27,79,138,0.2); }
+  .mjesto-img { position: relative; aspect-ratio: 16/10; overflow: hidden; }
+  .mjesto-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+  .mjesto-card:hover .mjesto-img img { transform: scale(1.05); }
+  .mjesto-num {
+    position: absolute; top: 14px; left: 14px; width: 34px; height: 34px;
+    background: var(--unesco); color: white; display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; border-radius: 2px;
+  }
+  .mjesto-type {
+    position: absolute; top: 14px; right: 14px; padding: 4px 12px;
+    background: rgba(250,250,248,0.92); backdrop-filter: blur(4px);
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--unesco); border-radius: 20px;
+  }
+  .mjesto-body { padding: 24px; }
+  .mjesto-year { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .mjesto-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--text-dark); margin-bottom: 8px; line-height: 1.1; }
+  .mjesto-desc { font-size: 0.85rem; color: var(--text-mid); line-height: 1.65; margin-bottom: 16px; }
+  .mjesto-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .mjesto-tag { font-size: 0.7rem; font-weight: 500; padding: 4px 10px; background: var(--cream); color: var(--text-mid); border-radius: 20px; }
+  .mjesto-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 14px; border-top: 1px solid var(--sand); }
+  .mjesto-info { font-size: 0.75rem; color: var(--text-light); }
+  .btn-mjesto {
+    display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px;
+    background: var(--unesco); color: white; text-decoration: none;
+    font-size: 0.73rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    border-radius: 2px; transition: all 0.3s;
+  }
+  .btn-mjesto:hover { background: #163d70; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(27,79,138,0.3); }
+
+  .mjesto-card.featured { grid-column: span 2; }
+  .mjesto-card.featured .mjesto-img { aspect-ratio: 21/9; }
+  .mjesto-card.featured .mjesto-name { font-size: 2rem; }
+
+  .page-footer { padding: 40px 60px; background: var(--text-dark); display: flex; justify-content: space-between; align-items: center; }
+  .page-footer .logo { color: white; }
+  .page-footer p { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .hero-content { padding: 0 24px 40px; }
+    .intro { grid-template-columns: 1fr; gap: 40px; padding: 50px 24px 30px; }
+    .mjesta { padding: 30px 24px 70px; }
+    .mjesta-grid { grid-template-columns: 1fr; }
+    .mjesto-card.featured { grid-column: span 1; }
+    .page-footer { padding: 30px 24px; flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="hrvatska-portal.html" class="logo">Otkrijte<span>HR</span></a>
+  <a href="hrvatska-portal.html" class="nav-back">← Natrag na početnu</a>
+</nav>
+
+<section class="hero">
+  <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1600&q=85" alt="UNESCO mjesta Hrvatske" onerror="this.src='https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1600&q=85'">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag">🌍 Svjetska baština</span>
+    <h1 class="hero-title">10 UNESCO mjesta<br><em>Hrvatske</em></h1>
+    <p class="hero-subtitle">Hrvatska spada u red europskih zemalja s najvećom gustoćom UNESCO zaštićenih dobara — od antičkih gradova do živih kulturnih tradicija.</p>
+  </div>
+</section>
+
+<div class="intro">
+  <div class="intro-text">
+    <h2>Baština koja<br><em>pripada svijetu</em></h2>
+    <p>UNESCO-ova lista svjetske baštine u Hrvatskoj broji 10 upisanih dobara — prirodnih i kulturnih. Svako od njih priča priču o tisućljetnoj prepletenosti čovjeka i prirode na ovim prostorima, od ilirskih gradina i grčkih kolonija do renesansnih gradova i živih tradicija koje se prenose s koljena na koljeno.</p>
+  </div>
+  <div class="intro-stats">
+    <div class="intro-stat">
+      <div class="intro-stat-num">10</div>
+      <div class="intro-stat-label">UNESCO dobara</div>
+    </div>
+    <div class="intro-stat">
+      <div class="intro-stat-num">8</div>
+      <div class="intro-stat-label">Kulturna dobra</div>
+    </div>
+    <div class="intro-stat">
+      <div class="intro-stat-num">2</div>
+      <div class="intro-stat-label">Prirodna dobra</div>
+    </div>
+    <div class="intro-stat">
+      <div class="intro-stat-num">1979.</div>
+      <div class="intro-stat-label">Prvo upisano dobro</div>
+    </div>
+  </div>
+</div>
+
+<section class="mjesta">
+  <h2>✦ Svih 10 UNESCO dobara</h2>
+  <div class="mjesta-grid">
+
+    <!-- DUBROVNIK FEATURED -->
+    <div class="mjesto-card featured">
+      <div class="mjesto-img">
+        <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1200&q=85" alt="Dubrovnik">
+        <div class="mjesto-num">1</div>
+        <div class="mjesto-type">🏙️ Kulturno</div>
+      </div>
+      <div class="mjesto-body">
+        <div class="mjesto-year">Upisano 1979. · prošireno 1994.</div>
+        <h3 class="mjesto-name">Stari grad Dubrovnik</h3>
+        <p class="mjesto-desc">Jedna od najljepše očuvanih srednjovjekovnih gradova na svijetu. Masivne gradske zidine, gotičke i renesansne palače, barokna crkva i popločane ulice stvaraju savršeno skladan urbani organizam koji je stoljeća uspješno branio svoju slobodu pod geslom "Non bene pro toto libertas venditur auro" — sloboda se ne prodaje ni za kakvo zlato.</p>
+        <div class="mjesto-tags">
+          <span class="mjesto-tag">🏰 Gradske zidine</span>
+          <span class="mjesto-tag">⛵ Jadransko more</span>
+          <span class="mjesto-tag">🎭 Game of Thrones</span>
+          <span class="mjesto-tag">🚶 Stradun</span>
+        </div>
+        <div class="mjesto-footer">
+          <div class="mjesto-info">📍 Dubrovačko-neretvanska županija</div>
+          <a href="https://www.google.com/maps/place/Dubrovnik+Old+Town" target="_blank" class="btn-mjesto">📍 Na karti</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLITVICE -->
+    <div class="mjesto-card">
+      <div class="mjesto-img">
+        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=85" alt="Plitvice">
+        <div class="mjesto-num">2</div>
+        <div class="mjesto-type">🌿 Prirodno</div>
+      </div>
+      <div class="mjesto-body">
+        <div class="mjesto-year">Upisano 1979.</div>
+        <h3 class="mjesto-name">Plitvička jezera</h3>
+        <p class="mjesto-desc">Jedino prirodno dobro na UNESCO listi u Hrvatskoj. Sustav sedrenih jezera i slapova bez premca u Europi, jedno od prvih zaštićenih dobara na UNESCO listi uopće.</p>
+        <div class="mjesto-tags">
+          <span class="mjesto-tag">💧 16 jezera</span>
+          <span class="mjesto-tag">🏞️ Slapovi</span>
+          <span class="mjesto-tag">🦌 Divlje životinje</span>
+        </div>
+        <div class="mjesto-footer">
+          <div class="mjesto-info">📍 Ličko-senjska županija</div>
+          <a href="https://www.google.com/maps/place/Plitvice+Lakes" target="_blank" class="btn-mjesto">📍 Na karti</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPLIT -->
+    <div class="mjesto-card">
+      <div class="mjesto-img">
+        <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=85" alt="Split">
+        <div class="mjesto-num">3</div>
+        <div class="mjesto-type">🏛️ Kulturno</div>
+      </div>
+      <div class="mjesto-body">
+        <div class="mjesto-year">Upisano 1979.</div>
+        <h3 class="mjesto-name">Stari grad Split s Dioklecijanovom palačom</h3>
+        <p class="mjesto-desc">Rimski car Dioklecijan sagradio je ovu palaču kao mirovinski dom u 4. st. Danas unutar zidina palače živi 3.000 ljudi — jedinstven spoj antike i živog urbanog tkiva.</p>
+        <div class="mjesto-tags">
+          <span class="mjesto-tag">🏛️ Rimska palača</span>
+          <span class="mjesto-tag">🏙️ Živi grad</span>
+          <span class="mjesto-tag">⚓ Riva</span>
+        </div>
+        <div class="mjesto-footer">
+          <div class="mjesto-info">📍 Splitsko-dalmatinska županija</div>
+          <a href="https://www.google.com/maps/place/Diocletian's+Palace" target="_blank" class="btn-mjesto">📍 Na karti</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- POREC -->
+    <div class="mjesto-card">
+      <div class="mjesto-img">
+        <img src="https://images.unsplash.com/photo-1571367034861-e6729ad9c2d5?w=800&q=85" alt="Poreč">
+        <div class="mjesto-num">4</div>
+        <div class="mjesto-type">⛪ Kulturno</div>
+      </div>
+      <div class="mjesto-body">
+        <div class="mjesto-year">Upisano 1997.</div>
+        <h3 class="mjesto-name">Eufrazijeva bazilika – Poreč</h3>
+        <p class="mjesto-desc">Jedan od najljepše očuvanih ranokršćanskih arhitektonskih sklopova na svijetu. Zlatni mozaici iz 6. stoljeća koji krase apsidu konkuriraju čak i onima u Ravenni.</p>
+        <div class="mjesto-tags">
+          <span class="mjesto-tag">✝️ Ranokršćanski</span>
+          <span class="mjesto-tag">🎨 Mozaici 6.st.</span>
+          <span class="mjesto-tag">🏛️ Istra</span>
+        </div>
+        <div class="mjesto-footer">
+          <div class="mjesto-info">📍 Istarska županija</div>
+          <a href="https://www.google.com/maps/place/Euphrasian+Basilica" target="_blank" class="btn-mjesto">📍 Na karti</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- TROGIR -->
+    <div class="mjesto-card">
+      <div class="mjesto-img">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=85" alt="Trogir">
+        <div class="mjesto-num">5</div>
+        <div class="mjesto-type">🏙️ Kulturno</div>
+      </div>
+      <div class="mjesto-body">
+        <div class="mjesto-year">Upisano 1997.</div>
+        <h3 class="mjesto-name">Povijesni grad Trogir</h3>
+        <p class="mjesto-desc">Grčka kolonija Tragurion, a danas savršeno očuvani grad na otočiću s najgušćom koncentracijom romaničke i gotičke arhitekture u Europi. Katedrala sv. Lovre s portalima Radovana pravi je dragulj.</p>
+        <div class="mjesto-tags">
+          <span class="mjesto-tag">🏛️ Romanika i gotika</span>
+          <span class="mjesto-tag">🇬🇷 Grčka kolonija</span>
+          <span class="mjesto-tag">⛪ Katedrala sv. Lovre</span>
+        </div>
+        <div class="mjesto-footer">
+          <div class="mjesto-info">📍 Splitsko-dalmatinska županija</div>
+          <a href="https://www.google.com/maps/place/Trogir+Old+Town" target="_blank" class="btn-mjesto">📍 Na karti</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIBENIK -->
+    <div class="mjesto-card">
+      <div class="mjesto-img">
+        <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=85" alt="Šibenik">
+        <div class="mjesto-num">6</div>
+        <div class="mjesto-type">⛪ Kulturno</div>
+      </div>
+      <div class="mjesto-body">
+        <div class="mjesto-year">Upisano 2000.</div>
+        <h3 class="mjesto-name">Katedrala sv. Jakova – Šibenik</h3>
+        <p class="mjesto-desc">Jedina katedrala na svijetu izgrađena isključivo od kamena, bez drva i cigle. Juraj Dalmatinac i Nikola Firentinac gradili su je 105 godina. Friz 71 portreta lokalnih mještana koji ukrašava apsidu jedinstven je u gotičkoj arhitekturi.</p>
+        <div class="mjesto-tags">
+          <span class="mjesto-tag">🏛️ Čisti kamen</span>
+          <span class="mjesto-tag">👤 71 portret</span>
+          <span class="mjesto-tag">⛪ Juraj Dalmatinac</span>
+        </div>
+        <div class="mjesto-footer">
+          <div class="mjesto-info">📍 Šibensko-kninska županija</div>
+          <a href="https://www.google.com/maps/place/Cathedral+of+St.+James" target="_blank" class="btn-mjesto">📍 Na karti</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- STARI GRAD POLJE -->
+    <div class="mjesto-card">
+      <div class="mjesto-img">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85" alt="Stari Grad">
+        <div class="mjesto-num">7</div>
+        <div class="mjesto-type">🌾 Kulturno</div>
+      </div>
+      <div class="mjesto-body">
+        <div class="mjesto-year">Upisano 2008.</div>
+        <h3 class="mjesto-name">Starogradsko polje – Hvar</h3>
+        <p class="mjesto-desc">Aktivni agrarni krajolik koji su grčki kolonisti podijelili u pravilne parcele (chora) u 4. st. pr. Kr. i koji su se koristili kontinuirano sve do danas. Jedinstven primjer antičkog prostornog planiranja u živoj upotrebi.</p>
+        <div class="mjesto-tags">
+          <span class="mjesto-tag">🏺 Grčka chora</span>
+          <span class="mjesto-tag">🍷 Vinogradi</span>
+          <span class="mjesto-tag">🫒 Masline</span>
+        </div>
+        <div class="mjesto-footer">
+          <div class="mjesto-info">📍 Splitsko-dalmatinska županija · Hvar</div>
+          <a href="https://www.google.com/maps/place/Stari+Grad+Plain" target="_blank" class="btn-mjesto">📍 Na karti</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- VUKOVAR -->
+    <div class="mjesto-card">
+      <div class="mjesto-img">
+        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=85" alt="Vukovar">
+        <div class="mjesto-num">8</div>
+        <div class="mjesto-type">🏺 Kulturno</div>
+      </div>
+      <div class="mjesto-body">
+        <div class="mjesto-year">Upisano 2007.</div>
+        <h3 class="mjesto-name">Stećci – Vukovar i šire</h3>
+        <p class="mjesto-desc">Srednjovjekovni nadgrobni spomenici stećci rasprostranjeni su diljem Bosne i Hercegovine, Srbije, Crne Gore i Hrvatske. Monumentalne kamene ploče s bogatim reljefima svjedoče o originalnoj funerarnoj kulturi Balkana.</p>
+        <div class="mjesto-tags">
+          <span class="mjesto-tag">⚰️ Nadgrobni</span>
+          <span class="mjesto-tag">🏺 Srednji vijek</span>
+          <span class="mjesto-tag">🌍 Transnacionalno</span>
+        </div>
+        <div class="mjesto-footer">
+          <div class="mjesto-info">📍 Više županija</div>
+          <a href="https://www.google.com/maps/search/stećci+Hrvatska" target="_blank" class="btn-mjesto">📍 Na karti</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SINJSKA ALKA -->
+    <div class="mjesto-card">
+      <div class="mjesto-img">
+        <img src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=800&q=85" alt="Sinjska alka">
+        <div class="mjesto-num">9</div>
+        <div class="mjesto-type">🏇 Nematerjalno</div>
+      </div>
+      <div class="mjesto-body">
+        <div class="mjesto-year">Upisano 2010.</div>
+        <h3 class="mjesto-name">Sinjska alka</h3>
+        <p class="mjesto-desc">Viteška igra konjanika koji kopljem gađaju željezni prsten — alku. Održava se u Sinju svake prve nedjelje u kolovozu od 1717. u spomen na pobjedu nad Osmanlijama. Jedno od najstarijih živih vitežkih natjecanja u Europi.</p>
+        <div class="mjesto-tags">
+          <span class="mjesto-tag">🏇 Viteška igra</span>
+          <span class="mjesto-tag">📅 Od 1717.</span>
+          <span class="mjesto-tag">🎊 Kolovoz</span>
+        </div>
+        <div class="mjesto-footer">
+          <div class="mjesto-info">📍 Sinj, Splitsko-dalmatinska</div>
+          <a href="https://www.google.com/maps/place/Sinj" target="_blank" class="btn-mjesto">📍 Na karti</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- KLAPSKO PJEVANJE -->
+    <div class="mjesto-card">
+      <div class="mjesto-img">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=85" alt="Klapa">
+        <div class="mjesto-num">10</div>
+        <div class="mjesto-type">🎵 Nematerjalno</div>
+      </div>
+      <div class="mjesto-body">
+        <div class="mjesto-year">Upisano 2012.</div>
+        <h3 class="mjesto-name">Klapsko pjevanje</h3>
+        <p class="mjesto-desc">Tradicija a cappella višeglasnog pjevanja muškaraca s dalmatinskog primorja. Klape pjevaju o ljubavi, moru, zavičaju i domovini. Danas postoje i ženske klape, a tradicija je živa u stotinama ansambala diljem Dalmacije i šire.</p>
+        <div class="mjesto-tags">
+          <span class="mjesto-tag">🎶 A cappella</span>
+          <span class="mjesto-tag">🌊 Dalmacija</span>
+          <span class="mjesto-tag">❤️ Živa tradicija</span>
+        </div>
+        <div class="mjesto-footer">
+          <div class="mjesto-info">📍 Dalmacija</div>
+          <a href="https://www.google.com/maps/place/Omiš" target="_blank" class="btn-mjesto">📍 Na karti</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="page-footer">
+  <a href="hrvatska-portal.html" class="logo">Otkrijte<span>HR</span></a>
+  <p>© 2025 OtkrijtHR · Sva prava pridržana</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.mjesto-card').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = `opacity 0.5s ease ${i * 0.07}s, transform 0.5s ease ${i * 0.07}s`;
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
