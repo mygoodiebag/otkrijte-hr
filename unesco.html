@@ -38,7 +38,7 @@
   :root {
     --white: #FAFAF8; --cream: #F5F2EC; --sand: #E8E0D0;
     --gold: #C9A84C; --gold-light: #E8C97A;
-    --sea: #2A7FA8; --sea-dark: #1A5F80;
+    --sea: #2A7FA8; --sea-dark: #1A5F80; --coral: #D4654A; --airbnb: #FF5A5F; --adriatic: #1B6B93;
     --text-dark: #1C1C1A; --text-mid: #4A4A46; --text-light: #8A8A84;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -89,6 +89,18 @@
   .card-desc { font-size: 0.82rem; color: var(--text-mid); line-height: 1.65; margin-bottom: 14px; }
   .card-facts { display: flex; flex-wrap: wrap; gap: 6px; }
   .fact { font-size: 0.7rem; font-weight: 500; padding: 3px 10px; background: var(--cream); color: var(--text-mid); border-radius: 20px; }
+
+  .unesco-booking { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .btn-un { display: inline-flex; align-items: center; gap: 5px; padding: 7px 12px; color: white; text-decoration: none; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 2px; transition: all 0.3s; white-space: nowrap; }
+  .btn-un:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+  .btn-un.un-booking { background: var(--sea); }
+  .btn-un.un-booking:hover { background: var(--sea-dark); }
+  .btn-un.un-airbnb { background: var(--airbnb); }
+  .btn-un.un-airbnb:hover { background: #e04e53; }
+  .btn-un.un-adriatic { background: var(--adriatic); }
+  .btn-un.un-adriatic:hover { background: #145577; }
+  .btn-un.un-google { background: var(--coral); }
+  .btn-un.un-google:hover { background: #b8503a; }
 
   .chat-panel { position: sticky; top: 0; height: 100vh; background: var(--cream); border-left: 1px solid var(--sand); display: flex; flex-direction: column; }
   .chat-header { padding: 28px 24px 20px; border-bottom: 1px solid var(--sand); background: var(--white); }
@@ -193,6 +205,12 @@
             <span class="fact">🎬 Game of Thrones</span>
             <span class="fact">📅 od 1979.</span>
           </div>
+          <div class="unesco-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Dubrovnik%2C+Croatia" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Dubrovnik--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/dalmacija/dubrovnik" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Dubrovnik" target="_blank" rel="noopener noreferrer" class="btn-un un-google">📍 Maps</a>
+          </div>
         </div>
       </div>
 
@@ -210,6 +228,12 @@
             <span class="fact">💧 16 jezera</span>
             <span class="fact">🌊 Slap 78m</span>
             <span class="fact">📅 od 1979.</span>
+          </div>
+          <div class="unesco-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Plitvicka+Jezera" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Plitvice-Lakes--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/kvarner/plitvicka-jezera" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Plitvička+jezera" target="_blank" rel="noopener noreferrer" class="btn-un un-google">📍 Maps</a>
           </div>
         </div>
       </div>
@@ -229,6 +253,12 @@
             <span class="fact">👥 Živi unutar zidina</span>
             <span class="fact">📅 od 1979.</span>
           </div>
+          <div class="unesco-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Split%2C+Croatia" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Split--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/dalmacija/split" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Split" target="_blank" rel="noopener noreferrer" class="btn-un un-google">📍 Maps</a>
+          </div>
         </div>
       </div>
 
@@ -246,6 +276,12 @@
             <span class="fact">🕌 6. stoljeće</span>
             <span class="fact">✨ Bizantski mozaici</span>
             <span class="fact">📅 od 1997.</span>
+          </div>
+          <div class="unesco-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Poreč%2C+Croatia" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Poreč--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/istra/porec" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Poreč" target="_blank" rel="noopener noreferrer" class="btn-un un-google">📍 Maps</a>
           </div>
         </div>
       </div>
@@ -265,6 +301,12 @@
             <span class="fact">🏰 Romanika i gotika</span>
             <span class="fact">📅 od 1997.</span>
           </div>
+          <div class="unesco-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Trogir%2C+Croatia" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Trogir--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/dalmacija/trogir" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Trogir" target="_blank" rel="noopener noreferrer" class="btn-un un-google">📍 Maps</a>
+          </div>
         </div>
       </div>
 
@@ -282,6 +324,12 @@
             <span class="fact">🪨 Samo kamen</span>
             <span class="fact">⏳ 105 godina gradnje</span>
             <span class="fact">📅 od 2000.</span>
+          </div>
+          <div class="unesco-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Šibenik%2C+Croatia" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Šibenik--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/dalmacija/sibenik" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Šibenik" target="_blank" rel="noopener noreferrer" class="btn-un un-google">📍 Maps</a>
           </div>
         </div>
       </div>
@@ -301,6 +349,12 @@
             <span class="fact">🌿 2400 god. polja</span>
             <span class="fact">📅 od 2008.</span>
           </div>
+          <div class="unesco-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Stari+Grad%2C+Hvar" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Stari-Grad--Hvar--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/dalmacija/hvar/stari-grad" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Stari+Grad+Hvar" target="_blank" rel="noopener noreferrer" class="btn-un un-google">📍 Maps</a>
+          </div>
         </div>
       </div>
 
@@ -318,6 +372,12 @@
             <span class="fact">🦢 Na Dunavu</span>
             <span class="fact">🕊️ Simbol mira</span>
             <span class="fact">🏺 Vučedolska kultura</span>
+          </div>
+          <div class="unesco-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Vukovar%2C+Croatia" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Vukovar--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/dalmacija/vukovar" target="_blank" rel="noopener noreferrer sponsored" class="btn-un un-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Vukovar" target="_blank" rel="noopener noreferrer" class="btn-un un-google">📍 Maps</a>
           </div>
         </div>
       </div>

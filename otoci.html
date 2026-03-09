@@ -38,7 +38,7 @@
   :root {
     --white: #FAFAF8; --cream: #F5F2EC; --sand: #E8E0D0;
     --gold: #C9A84C; --gold-light: #E8C97A;
-    --sea: #2A7FA8; --sea-dark: #1A5F80; --sea-light: #5BB3D4;
+    --sea: #2A7FA8; --sea-dark: #1A5F80; --sea-light: #5BB3D4; --coral: #D4654A; --airbnb: #FF5A5F; --adriatic: #1B6B93;
     --text-dark: #1C1C1A; --text-mid: #4A4A46; --text-light: #8A8A84;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -80,6 +80,18 @@
   .island-desc { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; }
   .island-tags { display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap; }
   .tag { font-size: 0.72rem; padding: 3px 10px; border-radius: 20px; background: var(--cream); color: var(--text-mid); border: 1px solid var(--sand); }
+
+  .island-booking { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .btn-isl { display: inline-flex; align-items: center; gap: 5px; padding: 7px 12px; color: white; text-decoration: none; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 2px; transition: all 0.3s; white-space: nowrap; }
+  .btn-isl:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+  .btn-isl.il-booking { background: var(--sea); }
+  .btn-isl.il-booking:hover { background: var(--sea-dark); }
+  .btn-isl.il-airbnb { background: var(--airbnb); }
+  .btn-isl.il-airbnb:hover { background: #e04e53; }
+  .btn-isl.il-adriatic { background: var(--adriatic); }
+  .btn-isl.il-adriatic:hover { background: #145577; }
+  .btn-isl.il-google { background: var(--coral); }
+  .btn-isl.il-google:hover { background: #b8503a; }
 
   .chat-panel { position: sticky; top: 0; height: 100vh; background: var(--cream); border-left: 1px solid var(--sand); display: flex; flex-direction: column; }
   .chat-header { padding: 28px 24px 20px; border-bottom: 1px solid var(--sand); background: var(--white); }
@@ -171,6 +183,12 @@
             <span class="tag">🍷 Gastronomija</span>
             <span class="tag">🌙 Noćni život</span>
           </div>
+          <div class="island-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Hvar%2C+Croatia" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Hvar--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/dalmacija/hvar/hvar" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Hvar" target="_blank" rel="noopener noreferrer" class="btn-isl il-google">📍 Maps</a>
+          </div>
         </div>
       </div>
 
@@ -185,6 +203,12 @@
             <span class="tag">🏖️ Zlatni Rat</span>
             <span class="tag">🪨 Kamen</span>
             <span class="tag">🤿 Ronjenje</span>
+          </div>
+          <div class="island-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Bol%2C+Brač" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Brač--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/dalmacija/brac" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Brač" target="_blank" rel="noopener noreferrer" class="btn-isl il-google">📍 Maps</a>
           </div>
         </div>
       </div>
@@ -201,6 +225,12 @@
             <span class="tag">🍷 Vino Vugava</span>
             <span class="tag">🏝️ Netaknuta priroda</span>
           </div>
+          <div class="island-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Vis%2C+Croatia" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Vis--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/dalmacija/vis" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Vis" target="_blank" rel="noopener noreferrer" class="btn-isl il-google">📍 Maps</a>
+          </div>
         </div>
       </div>
 
@@ -215,6 +245,12 @@
             <span class="tag">🏰 Stari grad</span>
             <span class="tag">🧭 Marco Polo</span>
             <span class="tag">🍋 Gastronomija</span>
+          </div>
+          <div class="island-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Korčula%2C+Croatia" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Korčula--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/dalmacija/korcula" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Korčula" target="_blank" rel="noopener noreferrer" class="btn-isl il-google">📍 Maps</a>
           </div>
         </div>
       </div>
@@ -231,6 +267,12 @@
             <span class="tag">🚴 Biciklizam</span>
             <span class="tag">🏊 Jezera</span>
           </div>
+          <div class="island-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Mljet%2C+Croatia" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Mljet--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/dalmacija/mljet" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Mljet" target="_blank" rel="noopener noreferrer" class="btn-isl il-google">📍 Maps</a>
+          </div>
         </div>
       </div>
 
@@ -245,6 +287,12 @@
             <span class="tag">🏛️ Povijest</span>
             <span class="tag">🍇 Žlahtina vino</span>
             <span class="tag">👨‍👩‍👧 Obitelji</span>
+          </div>
+          <div class="island-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Krk%2C+Croatia" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Krk--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/kvarner/krk" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Krk" target="_blank" rel="noopener noreferrer" class="btn-isl il-google">📍 Maps</a>
           </div>
         </div>
       </div>
@@ -261,6 +309,12 @@
             <span class="tag">⛪ Romanika</span>
             <span class="tag">🌿 Šume</span>
           </div>
+          <div class="island-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Rab%2C+Croatia" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Rab--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/kvarner/rab" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Rab" target="_blank" rel="noopener noreferrer" class="btn-isl il-google">📍 Maps</a>
+          </div>
         </div>
       </div>
 
@@ -275,6 +329,12 @@
             <span class="tag">🫒 Maslinovo ulje</span>
             <span class="tag">🍯 Med</span>
             <span class="tag">⚓ Tihe uvale</span>
+          </div>
+          <div class="island-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Šolta%2C+Croatia" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Šolta--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/dalmacija/solta" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Šolta" target="_blank" rel="noopener noreferrer" class="btn-isl il-google">📍 Maps</a>
           </div>
         </div>
       </div>
@@ -291,6 +351,12 @@
             <span class="tag">🌊 Netaknuto more</span>
             <span class="tag">🐠 Ronilački raj</span>
           </div>
+          <div class="island-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Lastovo%2C+Croatia" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Lastovo--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/dalmacija/lastovo" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Lastovo" target="_blank" rel="noopener noreferrer" class="btn-isl il-google">📍 Maps</a>
+          </div>
         </div>
       </div>
 
@@ -305,6 +371,12 @@
             <span class="tag">🌺 Arboretum</span>
             <span class="tag">🐬 Delfini</span>
             <span class="tag">💆 Wellness</span>
+          </div>
+          <div class="island-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Mali+Lošinj%2C+Croatia" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Lošinj--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/kvarner/losinj" target="_blank" rel="noopener noreferrer sponsored" class="btn-isl il-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Lošinj" target="_blank" rel="noopener noreferrer" class="btn-isl il-google">📍 Maps</a>
           </div>
         </div>
       </div>
