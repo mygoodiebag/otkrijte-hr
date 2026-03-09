@@ -26,7 +26,10 @@
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80">
 <title>Karta Hrvatske — Pronađite destinaciju | OtkrijteHR</title>
 <link rel="canonical" href="https://otkrijte-hr.netlify.app/karta.html">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇭🇷</text></svg>">
+<link rel="alternate" hreflang="hr" href="https://otkrijte-hr.netlify.app/karta.html">
+<link rel="alternate" hreflang="en" href="https://otkrijte-hr.netlify.app/en/map.html">
+<link rel="alternate" hreflang="x-default" href="https://otkrijte-hr.netlify.app/karta.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -126,19 +129,22 @@
   }
   .logo span { color: var(--gold); }
 
-  .nav-back {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    text-decoration: none;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-mid);
-    transition: color 0.3s;
-  }
-  .nav-back:hover { color: var(--sea); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mid); transition: color 0.3s; position: relative; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
+  .nav-links a:hover { color: var(--text-dark); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links a.active { color: var(--sea); font-weight: 600; }
+  .nav-links a.active::after { width: 100%; background: var(--sea); }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+  .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--text-dark); transition: all 0.3s; }
+  .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: rgba(250,250,248,0.98); backdrop-filter: blur(16px); flex-direction: column; align-items: center; justify-content: center; gap: 32px; opacity: 0; transition: opacity 0.3s ease; }
+  .mobile-menu.active { display: flex; opacity: 1; }
+  .mobile-menu a { text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; color: var(--text-dark); transition: color 0.3s; }
+  .mobile-menu a:hover { color: var(--sea); }
+  .nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
   .main {
     flex: 1;
@@ -315,8 +321,14 @@
   }
   .chat-send:hover { background: var(--sea-dark); transform: scale(1.05); }
 
+  .lang-switch { display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 500; color: var(--text-mid); text-decoration: none; letter-spacing: 0.08em; transition: color 0.3s; }
+  .lang-switch:hover { color: var(--text-dark); }
+
   @media (max-width: 900px) {
     html, body { overflow: auto; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    nav { padding: 0 20px; }
     .main { grid-template-columns: 1fr; overflow: visible; }
     .map-section { height: 50vh; }
     .chat-panel { height: auto; }
@@ -327,8 +339,36 @@
 
 <nav>
   <a href="index.html" class="logo">Otkrijte<span>HR</span></a>
-  <a href="index.html" class="nav-back">← Povratak na početnu</a>
+  <button class="nav-hamburger" id="hamburgerBtn" aria-label="Otvori izbornik">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="index.html#ljetovanje">Ljetovanje</a></li>
+    <li><a href="otoci.html">Otoci</a></li>
+    <li><a href="nacionalni-parkovi.html">Parkovi</a></li>
+    <li><a href="unesco.html">UNESCO</a></li>
+    <li><a href="priroda-avantura.html">Priroda</a></li>
+    <li><a href="saranski-ribolov.html">Ribolov</a></li>
+    <li><a href="karta.html" class="active">Karta</a></li>
+    <li><a href="en/map.html" class="lang-switch">EN</a></li>
+    <li><a href="de/karte.html" class="lang-switch">DE</a></li>
+    <li><a href="it/mappa.html" class="lang-switch">IT</a></li>
+  </ul>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#ljetovanje">Ljetovanje</a>
+  <a href="otoci.html">Otoci</a>
+  <a href="nacionalni-parkovi.html">Parkovi</a>
+  <a href="unesco.html">UNESCO</a>
+  <a href="priroda-avantura.html">Priroda</a>
+  <a href="saranski-ribolov.html">Ribolov</a>
+  <a href="karta.html">Karta</a>
+  <a href="en/map.html" class="lang-switch">English</a>
+  <a href="de/karte.html" class="lang-switch">Deutsch</a>
+  <a href="it/mappa.html" class="lang-switch">Italiano</a>
+</div>
 
 <div class="main">
 
@@ -382,6 +422,22 @@
 </div>
 
 <script>
+  // Hamburger meni
+  const hamburger = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', function() {
+    this.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+
   const chatInput = document.getElementById('chatInput');
   const chatSend = document.getElementById('chatSend');
   const chatMessages = document.getElementById('chatMessages');
