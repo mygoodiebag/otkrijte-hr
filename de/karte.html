@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZKLS10NPJ9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZKLS10NPJ9');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Interaktive Karte von Kroatien — finden Sie Strände, Städte, Nationalparks und Unterkünfte an einem Ort. KI-Reiseführer zu Ihren Diensten.">
+<meta name="keywords" content="Kroatien Karte, Touristenkarte, Strände Kroatien, Adriastädte, Nationalparks, Unterkünfte Kroatien">
+<meta name="author" content="EntdeckeKroatien">
+<meta property="og:title" content="Karte von Kroatien — Finden Sie Ihr perfektes Reiseziel | EntdeckeKroatien">
+<meta property="og:description" content="Interaktive Karte von Kroatien — Strände, Städte, Nationalparks und KI-Reiseführer.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:image" content="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80">
+<meta property="og:url" content="https://otkrijte-hr.netlify.app/de/karte.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Karte von Kroatien — Finden Sie Ihr perfektes Reiseziel | EntdeckeKroatien">
+<meta name="twitter:description" content="Interaktive Karte von Kroatien — Strände, Städte, Nationalparks und KI-Reiseführer.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80">
+<title>Karte von Kroatien — Finden Sie Ihr Reiseziel | EntdeckeKroatien</title>
+<link rel="canonical" href="https://otkrijte-hr.netlify.app/de/karte.html">
+<link rel="alternate" hreflang="hr" href="https://otkrijte-hr.netlify.app/karta.html">
+<link rel="alternate" hreflang="de" href="https://otkrijte-hr.netlify.app/de/karte.html">
+<link rel="alternate" hreflang="x-default" href="https://otkrijte-hr.netlify.app/karta.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Schema.org JSON-LD: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Startseite",
+      "item": "https://otkrijte-hr.netlify.app/de/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Karte von Kroatien",
+      "item": "https://otkrijte-hr.netlify.app/de/karte.html"
+    }
+  ]
+}
+</script>
+
+<!-- Schema.org JSON-LD: WebPage + Map -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Karte von Kroatien — Interaktive Touristenkarte",
+  "description": "Interaktive Karte von Kroatien mit Stränden, Städten, Nationalparks und KI-Reiseführer.",
+  "url": "https://otkrijte-hr.netlify.app/de/karte.html",
+  "inLanguage": "de",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "EntdeckeKroatien",
+    "url": "https://otkrijte-hr.netlify.app/de/"
+  },
+  "about": {
+    "@type": "Country",
+    "name": "Kroatien",
+    "alternateName": "Hrvatska",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 44.5,
+      "longitude": 16.4
+    }
+  }
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #FAFAF8;
+    --cream: #F5F2EC;
+    --sand: #E8E0D0;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --sea: #2A7FA8;
+    --sea-dark: #1A5F80;
+    --text-dark: #1C1C1A;
+    --text-mid: #4A4A46;
+    --text-light: #8A8A84;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; overflow: hidden; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column;
+  }
+
+  nav {
+    height: 64px;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(250,250,248,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    flex-shrink: 0;
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-decoration: none;
+  }
+  .logo span { color: var(--gold); }
+
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mid); transition: color 0.3s; position: relative; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
+  .nav-links a:hover { color: var(--text-dark); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links a.active { color: var(--sea); font-weight: 600; }
+  .nav-links a.active::after { width: 100%; background: var(--sea); }
+  .lang-switch { display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 500; color: var(--text-mid); text-decoration: none; letter-spacing: 0.08em; transition: color 0.3s; }
+  .lang-switch:hover { color: var(--text-dark); }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+  .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--text-dark); transition: all 0.3s; }
+  .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: rgba(250,250,248,0.98); backdrop-filter: blur(16px); flex-direction: column; align-items: center; justify-content: center; gap: 32px; opacity: 0; transition: opacity 0.3s ease; }
+  .mobile-menu.active { display: flex; opacity: 1; }
+  .mobile-menu a { text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; color: var(--text-dark); transition: color 0.3s; }
+  .mobile-menu a:hover { color: var(--sea); }
+  .nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  .main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    overflow: hidden;
+  }
+
+  .map-section iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  .chat-panel {
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    border-left: 1px solid var(--sand);
+    overflow: hidden;
+  }
+
+  .chat-panel-header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--sand);
+    background: var(--cream);
+    flex-shrink: 0;
+  }
+
+  .chat-panel-tag {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .chat-panel-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    line-height: 1.1;
+  }
+  .chat-panel-title em { font-style: italic; color: var(--sea); }
+
+  .chat-panel-desc {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .chat-messages::-webkit-scrollbar { width: 4px; }
+  .chat-messages::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 2px; }
+
+  .chat-msg {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .chat-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--sea);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .chat-bubble {
+    padding: 10px 14px;
+    border-radius: 12px;
+    border-bottom-left-radius: 4px;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    background: var(--cream);
+    color: var(--text-dark);
+    border: 1px solid var(--sand);
+  }
+
+  .quick-section {
+    padding: 12px 16px;
+    border-top: 1px solid var(--sand);
+    flex-shrink: 0;
+  }
+
+  .quick-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 8px;
+  }
+
+  .quick-questions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .quick-btn {
+    padding: 6px 12px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    border-radius: 20px;
+    color: var(--text-mid);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Outfit', sans-serif;
+  }
+  .quick-btn:hover {
+    background: var(--sea);
+    border-color: var(--sea);
+    color: white;
+  }
+
+  .chat-input-area {
+    padding: 12px 16px;
+    border-top: 1px solid var(--sand);
+    display: flex;
+    gap: 8px;
+    background: var(--white);
+    flex-shrink: 0;
+  }
+
+  .chat-input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid var(--sand);
+    border-radius: 20px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    background: var(--cream);
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .chat-input:focus { border-color: var(--sea); background: white; }
+  .chat-input::placeholder { color: var(--text-light); }
+
+  .chat-send {
+    width: 38px;
+    height: 38px;
+    background: var(--sea);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .chat-send:hover { background: var(--sea-dark); transform: scale(1.05); }
+
+  @media (max-width: 900px) {
+    html, body { overflow: auto; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    nav { padding: 0 20px; }
+    .main { grid-template-columns: 1fr; overflow: visible; }
+    .map-section { height: 50vh; }
+    .chat-panel { height: auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Entdecke<span>Kroatien</span></a>
+  <button class="nav-hamburger" id="hamburgerBtn" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="index.html#straende">Strände</a></li>
+    <li><a href="inseln.html">Inseln</a></li>
+    <li><a href="nationalparks.html">Parks</a></li>
+    <li><a href="unesco.html">UNESCO</a></li>
+    <li><a href="natur-abenteuer.html">Natur</a></li>
+    <li><a href="karpfenangeln.html">Angeln</a></li>
+    <li><a href="karte.html" class="active">Karte</a></li>
+    <li><a href="../karta.html" class="lang-switch">HR</a></li>
+  </ul>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#straende">Strände</a>
+  <a href="inseln.html">Inseln</a>
+  <a href="nationalparks.html">Parks</a>
+  <a href="unesco.html">UNESCO</a>
+  <a href="natur-abenteuer.html">Natur</a>
+  <a href="karpfenangeln.html">Angeln</a>
+  <a href="karte.html">Karte</a>
+  <a href="../karta.html" class="lang-switch">Hrvatski</a>
+</div>
+
+<div class="main">
+
+  <div class="map-section">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1456825.1!2d16.4!3d44.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sde!2shr!4v1620000000000!5m2!1sde!2shr"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Interaktive Touristenkarte von Kroatien">
+    </iframe>
+  </div>
+
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div class="chat-panel-tag">&#10022; KI-Reiseberater</div>
+      <h2 class="chat-panel-title">Fragen Sie den <em>KI-Reiseführer</em></h2>
+      <p class="chat-panel-desc">KI-Assistent für Reisetipps über Kroatien. Schreiben Sie in jeder Sprache!</p>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot">
+        <div class="chat-avatar">&#127754;</div>
+        <div class="chat-bubble">Hallo! &#127469;&#127479;<br>Ich bin Ihr KI-Reiseführer für Kroatien. Fragen Sie mich über Strände, Städte, Unterkünfte oder Aktivitäten in jeder Sprache!</div>
+      </div>
+    </div>
+
+    <div class="quick-section">
+      <div class="quick-label">Schnelle Fragen</div>
+      <div class="quick-questions">
+        <button class="quick-btn" onclick="askQuick('Welche Strände empfehlen Sie für Familien mit Kindern?')">&#128106; Familienstrände</button>
+        <button class="quick-btn" onclick="askQuick('Was sind die schönsten Inseln Kroatiens?')">&#127965; Schönste Inseln</button>
+        <button class="quick-btn" onclick="askQuick('Welcher Nationalpark ist einen Besuch wert?')">&#127807; Nationalparks</button>
+        <button class="quick-btn" onclick="askQuick('Die schönsten Städte an der Adria?')">&#127963; Küstenstädte</button>
+        <button class="quick-btn" onclick="askQuick('Wo kann man guten Fisch in Dalmatien essen?')">&#128031; Fischrestaurants</button>
+        <button class="quick-btn" onclick="askQuick('Wann ist die beste Reisezeit für Kroatien?')">&#128197; Wann reisen</button>
+      </div>
+    </div>
+
+    <div class="chat-input-area">
+      <input type="text" class="chat-input" id="chatInput" placeholder="Fragen Sie in jeder Sprache..." />
+      <button class="chat-send" id="chatSend">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', function() {
+    this.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+
+  const chatInput = document.getElementById('chatInput');
+  const chatSend = document.getElementById('chatSend');
+  const chatMessages = document.getElementById('chatMessages');
+  let history = [];
+
+  function addMessage(text, isUser) {
+    const msg = document.createElement('div');
+    msg.className = `chat-msg ${isUser ? 'user' : 'bot'}`;
+    msg.innerHTML = `
+      <div class="chat-avatar">${isUser ? '&#128100;' : '&#127754;'}</div>
+      <div class="chat-bubble">${text}</div>
+    `;
+    chatMessages.appendChild(msg);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function addTyping() {
+    const msg = document.createElement('div');
+    msg.className = 'chat-msg bot';
+    msg.id = 'typing';
+    msg.innerHTML = `<div class="chat-avatar">&#127754;</div><div class="chat-bubble">&#9679;&#9679;&#9679;</div>`;
+    chatMessages.appendChild(msg);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function removeTyping() {
+    const t = document.getElementById('typing');
+    if (t) t.remove();
+  }
+
+  async function sendMessage(text) {
+    if (!text) text = chatInput.value.trim();
+    if (!text) return;
+    chatSend.disabled = true;
+    addMessage(text, true);
+    chatInput.value = '';
+    history.push({ role: 'user', content: text });
+    addTyping();
+    try {
+      const res = await fetch('/.netlify/functions/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text })
+      });
+      const data = await res.json();
+      const reply = data.reply || 'Entschuldigung, bitte versuchen Sie es erneut.';
+      history.push({ role: 'assistant', content: reply });
+      removeTyping();
+      addMessage(reply, false);
+    } catch (err) {
+      removeTyping();
+      addMessage('Ups, etwas ist schiefgelaufen. Bitte versuchen Sie es erneut!', false);
+    }
+    chatSend.disabled = false;
+  }
+
+  function askQuick(q) { sendMessage(q); }
+  chatSend.addEventListener('click', () => sendMessage());
+  chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+</script>
+
+</body>
+</html>
