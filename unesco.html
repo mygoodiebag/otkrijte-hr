@@ -48,8 +48,22 @@
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 60px; display: flex; justify-content: space-between; align-items: center; background: rgba(250,250,248,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(201,168,76,0.2); }
   .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: var(--text-dark); text-decoration: none; }
   .logo span { color: var(--gold); }
-  .nav-back { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mid); transition: color 0.3s; }
-  .nav-back:hover { color: var(--gold); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mid); transition: color 0.3s; position: relative; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
+  .nav-links a:hover { color: var(--text-dark); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links a.active { color: var(--gold); font-weight: 600; }
+  .nav-links a.active::after { width: 100%; background: var(--gold); }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+  .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--text-dark); transition: all 0.3s; }
+  .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: rgba(250,250,248,0.98); backdrop-filter: blur(16px); flex-direction: column; align-items: center; justify-content: center; gap: 32px; opacity: 0; transition: opacity 0.3s ease; }
+  .mobile-menu.active { display: flex; opacity: 1; }
+  .mobile-menu a { text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; color: var(--text-dark); transition: color 0.3s; }
+  .mobile-menu a:hover { color: var(--gold); }
+  .nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
   .hero { min-height: 55vh; position: relative; display: flex; align-items: flex-end; overflow: hidden; }
   .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 50%; animation: slowZoom 14s ease-out forwards; }
@@ -65,7 +79,7 @@
   .intro-strip p { font-size: 0.88rem; color: rgba(255,255,255,0.85); line-height: 1.6; }
   .intro-strip p strong { color: var(--gold-light); }
 
-  .main-layout { display: grid; grid-template-columns: 1fr 360px; min-height: 80vh; }
+  .main-layout { min-height: 80vh; }
   .unesco-section { padding: 80px 60px; background: var(--white); }
   .section-header { margin-bottom: 40px; }
   .section-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 400; color: var(--text-dark); margin-bottom: 8px; }
@@ -102,61 +116,38 @@
   .btn-un.un-google { background: var(--coral); }
   .btn-un.un-google:hover { background: #b8503a; }
 
-  .chat-panel { position: sticky; top: 0; height: 100vh; background: var(--cream); border-left: 1px solid var(--sand); display: flex; flex-direction: column; }
-  .chat-header { padding: 28px 24px 20px; border-bottom: 1px solid var(--sand); background: var(--white); }
-  .chat-header h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
-  .chat-header p { font-size: 0.8rem; color: var(--text-light); }
-  .chat-ai-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); background: rgba(201,168,76,0.1); padding: 4px 10px; border-radius: 20px; margin-top: 10px; }
-  .chat-ai-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; }
-  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-
-  .chat-messages { flex: 1; overflow-y: auto; padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; scroll-behavior: smooth; }
-  .chat-messages::-webkit-scrollbar { width: 4px; }
-  .chat-messages::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 4px; }
-  .msg { display: flex; gap: 10px; align-items: flex-start; }
-  .msg.user { flex-direction: row-reverse; }
-  .msg-avatar { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; }
-  .msg.ai .msg-avatar { background: var(--gold); color: #fff; }
-  .msg.user .msg-avatar { background: var(--sea); color: #fff; }
-  .msg-bubble { max-width: 78%; padding: 10px 14px; border-radius: 14px; font-size: 0.85rem; line-height: 1.6; }
-  .msg.ai .msg-bubble { background: var(--white); color: var(--text-dark); border-radius: 4px 14px 14px 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-  .msg.user .msg-bubble { background: var(--sea); color: #fff; border-radius: 14px 4px 14px 14px; }
-
-  .quick-questions { padding: 12px 18px; display: flex; flex-direction: column; gap: 6px; border-top: 1px solid var(--sand); background: var(--white); }
-  .quick-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); margin-bottom: 2px; }
-  .quick-btns { display: flex; flex-wrap: wrap; gap: 6px; }
-  .quick-btn { font-size: 0.78rem; padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(201,168,76,0.4); background: rgba(201,168,76,0.06); color: #8B6914; cursor: pointer; transition: all 0.2s; font-family: 'Outfit', sans-serif; white-space: nowrap; }
-  .quick-btn:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
-
-  .chat-input-area { padding: 14px 18px 18px; border-top: 1px solid var(--sand); background: var(--white); display: flex; gap: 10px; }
-  .chat-input { flex: 1; padding: 10px 14px; border: 1px solid var(--sand); border-radius: 24px; font-family: 'Outfit', sans-serif; font-size: 0.85rem; background: var(--cream); color: var(--text-dark); outline: none; transition: border-color 0.2s; }
-  .chat-input:focus { border-color: var(--gold); }
-  .chat-send { width: 40px; height: 40px; border-radius: 50%; border: none; background: var(--gold); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, transform 0.1s; flex-shrink: 0; }
-  .chat-send:hover { background: #a8832a; }
-  .chat-send:active { transform: scale(0.95); }
-
-  .typing-indicator { display: flex; gap: 4px; align-items: center; padding: 10px 14px; }
-  .typing-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold-light); animation: typingAnim 1.2s infinite; }
-  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes typingAnim { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-6px); opacity: 1; } }
-
   .back-section { padding: 60px; background: var(--cream); text-align: center; border-top: 1px solid var(--sand); }
   .back-section p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 20px; }
   .btn-back { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; background: var(--gold); color: white; text-decoration: none; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 2px; transition: all 0.3s; }
   .btn-back:hover { background: #a8832a; transform: translateY(-2px); }
 
-  .chat-toggle { display: none; }
+  /* === AI CHAT PANEL === */
+  .ai-chat-toggle { position: fixed; bottom: 24px; right: 24px; z-index: 200; width: 56px; height: 56px; border-radius: 50%; background: var(--gold); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 4px 20px rgba(201,168,76,0.4); transition: all 0.3s; }
+  .ai-chat-toggle:hover { transform: scale(1.1); background: #a8832a; }
+  .ai-chat-panel { position: fixed; bottom: 90px; right: 24px; z-index: 199; width: 380px; max-height: 520px; background: var(--white); border-radius: 12px; box-shadow: 0 12px 48px rgba(0,0,0,0.15); border: 1px solid var(--sand); display: none; flex-direction: column; overflow: hidden; }
+  .ai-chat-panel.open { display: flex; }
+  .ai-chat-header { padding: 16px 20px; background: var(--gold); color: white; display: flex; align-items: center; gap: 10px; }
+  .ai-chat-header-icon { font-size: 1.3rem; }
+  .ai-chat-header-text h3 { font-size: 0.9rem; font-weight: 600; }
+  .ai-chat-header-text p { font-size: 0.7rem; opacity: 0.85; }
+  .ai-chat-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px; max-height: 280px; }
+  .ai-chat-messages::-webkit-scrollbar { width: 4px; }
+  .ai-chat-messages::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 4px; }
+  .ai-msg { padding: 10px 14px; border-radius: 12px; font-size: 0.85rem; line-height: 1.6; }
+  .ai-msg.bot { background: var(--cream); color: var(--text-dark); }
+  .ai-msg.user { background: var(--gold); color: white; align-self: flex-end; max-width: 85%; }
+  .ai-chat-suggestions { padding: 10px 16px; display: flex; flex-wrap: wrap; gap: 6px; border-top: 1px solid var(--sand); }
+  .ai-suggest-btn { font-size: 0.75rem; padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(201,168,76,0.4); background: rgba(201,168,76,0.06); color: #8B6914; cursor: pointer; transition: all 0.2s; font-family: 'Outfit', sans-serif; }
+  .ai-suggest-btn:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
+  .ai-chat-input { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--sand); }
+  .ai-chat-input input { flex: 1; padding: 8px 14px; border: 1px solid var(--sand); border-radius: 20px; font-family: 'Outfit', sans-serif; font-size: 0.85rem; outline: none; background: var(--cream); }
+  .ai-chat-input input:focus { border-color: var(--gold); }
+  .ai-chat-input button { width: 36px; height: 36px; border-radius: 50%; border: none; background: var(--gold); color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: background 0.2s; }
+  .ai-chat-input button:hover { background: #a8832a; }
 
   @media (max-width: 900px) {
-    .main-layout { grid-template-columns: 1fr; }
-    .chat-panel { position: fixed; bottom: 0; left: 0; right: 0; height: 70vh; z-index: 50; transform: translateY(100%); transition: transform 0.35s ease; border-top: 2px solid var(--gold); border-radius: 18px 18px 0 0; box-shadow: 0 -4px 30px rgba(0,0,0,0.15); }
-    .chat-panel.open { transform: translateY(0); }
-    .chat-toggle { display: flex; position: fixed; bottom: 16px; right: 16px; z-index: 60; width: 56px; height: 56px; border-radius: 50%; border: none; background: var(--gold); color: #fff; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 20px rgba(201,168,76,0.5); transition: transform 0.2s, background 0.2s; font-size: 1.5rem; }
-    .chat-toggle:hover { background: #a8832a; transform: scale(1.05); }
-    .chat-toggle.active { background: var(--text-mid); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-    .chat-close-bar { display: flex; justify-content: center; padding: 8px 0 4px; cursor: pointer; }
-    .chat-close-bar span { display: block; width: 40px; height: 4px; background: var(--sand); border-radius: 4px; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
     nav { padding: 16px 24px; }
     .hero-content { padding: 0 24px 40px; }
     .intro-strip { padding: 20px 24px; }
@@ -164,10 +155,7 @@
     .unesco-card { grid-template-columns: 1fr; }
     .card-img { height: 200px; }
     .back-section { padding: 40px 24px; }
-  }
-
-  @media (min-width: 901px) {
-    .chat-close-bar { display: none; }
+    .ai-chat-panel { width: calc(100vw - 48px); right: 24px; bottom: 86px; }
   }
 </style>
 </head>
@@ -175,8 +163,30 @@
 
 <nav>
   <a href="index.html" class="logo">Otkrijte<span>HR</span></a>
-  <a href="index.html" class="nav-back">← Povratak na početnu</a>
+  <button class="nav-hamburger" id="hamburgerBtn" aria-label="Otvori izbornik">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="index.html#ljetovanje">Ljetovanje</a></li>
+    <li><a href="otoci.html">Otoci</a></li>
+    <li><a href="nacionalni-parkovi.html">Parkovi</a></li>
+    <li><a href="unesco.html" class="active">UNESCO</a></li>
+    <li><a href="priroda-avantura.html">Priroda</a></li>
+    <li><a href="saranski-ribolov.html">Ribolov</a></li>
+    <li><a href="karta.html">Karta</a></li>
+  </ul>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#ljetovanje">Ljetovanje</a>
+  <a href="otoci.html">Otoci</a>
+  <a href="nacionalni-parkovi.html">Parkovi</a>
+  <a href="unesco.html">UNESCO</a>
+  <a href="priroda-avantura.html">Priroda</a>
+  <a href="saranski-ribolov.html">Ribolov</a>
+  <a href="karta.html">Karta</a>
+</div>
 
 <section class="hero">
   <img fetchpriority="high" src="https://images.unsplash.com/photo-1567371381078-50c5aff3eff8?w=1200&q=75&fm=webp" alt="UNESCO mjesta svjetske baštine u Hrvatskoj">
@@ -401,91 +411,75 @@
       <a href="index.html" class="btn-back">← Povratak na OtkrijteHR</a>
     </div>
   </section>
+</div>
 
-  <button class="chat-toggle" id="chatToggle" onclick="toggleChat()" aria-label="Otvori AI vodič">💬</button>
-
-  <aside class="chat-panel" id="chatPanel">
-    <div class="chat-close-bar" onclick="toggleChat()"><span></span></div>
-    <div class="chat-header">
-      <h3>AI vodič po UNESCO mjestima</h3>
-      <p>Kliknite na mjesto ili postavite pitanje</p>
-      <div class="chat-ai-badge">AI · Uvijek dostupan</div>
+<!-- AI CHAT PANEL -->
+<button class="ai-chat-toggle" id="aiToggle" aria-label="Otvori AI chat">🏛️</button>
+<div class="ai-chat-panel" id="aiPanel">
+  <div class="ai-chat-header">
+    <div class="ai-chat-header-icon">🏛️</div>
+    <div class="ai-chat-header-text">
+      <h3>UNESCO Vodič</h3>
+      <p>Pitajte me o UNESCO mjestima Hrvatske</p>
     </div>
-
-    <div class="chat-messages" id="chatMessages">
-      <div class="msg ai">
-        <div class="msg-avatar">AI</div>
-        <div class="msg-bubble">Pozdrav! 🏛️ Pitajte me sve o UNESCO mjestima Hrvatske — povijest, ulaznice, kako doći, što posjetiti...</div>
-      </div>
-    </div>
-
-    <div class="quick-questions">
-      <div class="quick-label">Brza pitanja</div>
-      <div class="quick-btns">
-        <button class="quick-btn" onclick="sendQuick('Koje UNESCO mjesto je najljepše za posjetiti?')">🏆 Najljepše</button>
-        <button class="quick-btn" onclick="sendQuick('Koje UNESCO mjesto je dobro za obitelji s djecom?')">👨‍👩‍👧 Obitelji</button>
-        <button class="quick-btn" onclick="sendQuick('Koliko košta posjet Plitvičkim jezerima?')">💰 Cijene</button>
-        <button class="quick-btn" onclick="sendQuick('Koja UNESCO mjesta su blizu Splita?')">📍 Blizu Splita</button>
-        <button class="quick-btn" onclick="sendQuick('Kada je najbolje posjetiti Dubrovnik?')">📅 Kada ići</button>
-      </div>
-    </div>
-
-    <div class="chat-input-area">
-      <input class="chat-input" id="chatInput" type="text" placeholder="Pitajte o UNESCO mjestima..." onkeydown="if(event.key==='Enter') sendMessage()">
-      <button class="chat-send" onclick="sendMessage()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <line x1="22" y1="2" x2="11" y2="13"></line>
-          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-        </svg>
-      </button>
-    </div>
-  </aside>
-
+  </div>
+  <div class="ai-chat-messages" id="aiMessages">
+    <div class="ai-msg bot">Pozdrav! 🏛️ Pitajte me sve o UNESCO mjestima Hrvatske — povijest, ulaznice, kako doći, što posjetiti...</div>
+  </div>
+  <div class="ai-chat-suggestions" id="aiSuggestions">
+    <button class="ai-suggest-btn" data-q="Koje UNESCO mjesto je najljepše za posjetiti?">Najljepše mjesto?</button>
+    <button class="ai-suggest-btn" data-q="Koliko košta posjet Plitvičkim jezerima?">Cijene Plitvica?</button>
+    <button class="ai-suggest-btn" data-q="Koja UNESCO mjesta su blizu Splita?">Blizu Splita?</button>
+    <button class="ai-suggest-btn" data-q="Kada je najbolje posjetiti Dubrovnik?">Kada u Dubrovnik?</button>
+  </div>
+  <div class="ai-chat-input">
+    <input type="text" id="aiInput" placeholder="Pitajte o UNESCO mjestima..." autocomplete="off">
+    <button id="aiSend">→</button>
+  </div>
 </div>
 
 <script>
-  const messagesDiv = document.getElementById('chatMessages');
-  const input = document.getElementById('chatInput');
+  // Hamburger meni
+  const hamburger = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', function() {
+    this.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
 
-  function addMessage(text, sender) {
-    const msg = document.createElement('div');
-    msg.className = `msg ${sender}`;
-    const avatar = document.createElement('div');
-    avatar.className = 'msg-avatar';
-    avatar.textContent = sender === 'ai' ? 'AI' : 'Vi';
-    const bubble = document.createElement('div');
-    bubble.className = 'msg-bubble';
-    bubble.textContent = text;
-    msg.appendChild(avatar);
-    msg.appendChild(bubble);
-    messagesDiv.appendChild(msg);
-    messagesDiv.scrollTop = messagesDiv.scrollHeight;
-  }
+  // AI Chat
+  const aiToggle = document.getElementById('aiToggle');
+  const aiPanel = document.getElementById('aiPanel');
+  const aiMessages = document.getElementById('aiMessages');
+  const aiInput = document.getElementById('aiInput');
+  const aiSend = document.getElementById('aiSend');
+  const aiSuggestions = document.getElementById('aiSuggestions');
 
-  function showTyping() {
-    const typing = document.createElement('div');
-    typing.className = 'msg ai';
-    typing.id = 'typing';
-    typing.innerHTML = `
-      <div class="msg-avatar">AI</div>
-      <div class="msg-bubble">
-        <div class="typing-indicator">
-          <div class="typing-dot"></div>
-          <div class="typing-dot"></div>
-          <div class="typing-dot"></div>
-        </div>
-      </div>`;
-    messagesDiv.appendChild(typing);
-    messagesDiv.scrollTop = messagesDiv.scrollHeight;
-  }
+  aiToggle.addEventListener('click', () => aiPanel.classList.toggle('open'));
 
-  function removeTyping() {
-    const t = document.getElementById('typing');
-    if (t) t.remove();
+  function addMsg(text, type) {
+    const div = document.createElement('div');
+    div.className = 'ai-msg ' + type;
+    div.textContent = text;
+    aiMessages.appendChild(div);
+    aiMessages.scrollTop = aiMessages.scrollHeight;
   }
 
   async function callAI(userMessage) {
-    showTyping();
+    const dots = document.createElement('div');
+    dots.className = 'ai-msg bot';
+    dots.id = 'typing';
+    dots.textContent = '...';
+    aiMessages.appendChild(dots);
+    aiMessages.scrollTop = aiMessages.scrollHeight;
     try {
       const response = await fetch('/.netlify/functions/chat', {
         method: 'POST',
@@ -493,49 +487,42 @@
         body: JSON.stringify({ message: userMessage })
       });
       const data = await response.json();
-      removeTyping();
-      addMessage(data.reply || 'Žao mi je, pokušajte ponovo.', 'ai');
+      const t = document.getElementById('typing');
+      if (t) t.remove();
+      addMsg(data.reply || 'Žao mi je, pokušajte ponovo.', 'bot');
     } catch (err) {
-      removeTyping();
-      addMessage('Trenutno ne mogu odgovoriti. Pokušajte za trenutak.', 'ai');
+      const t = document.getElementById('typing');
+      if (t) t.remove();
+      addMsg('Trenutno ne mogu odgovoriti. Pokušajte za trenutak.', 'bot');
     }
   }
 
-  function sendMessage() {
-    const text = input.value.trim();
-    if (!text) return;
-    addMessage(text, 'user');
-    input.value = '';
-    callAI(text);
+  function handleSend() {
+    const q = aiInput.value.trim();
+    if (!q) return;
+    addMsg(q, 'user');
+    aiInput.value = '';
+    aiSuggestions.style.display = 'none';
+    callAI(q);
   }
 
-  function sendQuick(text) {
-    addMessage(text, 'user');
-    callAI(text);
-  }
-
-  function toggleChat() {
-    const panel = document.getElementById('chatPanel');
-    const btn = document.getElementById('chatToggle');
-    panel.classList.toggle('open');
-    btn.classList.toggle('active');
-    btn.textContent = panel.classList.contains('open') ? '✕' : '💬';
-  }
+  aiSend.addEventListener('click', handleSend);
+  aiInput.addEventListener('keydown', e => { if (e.key === 'Enter') handleSend(); });
+  aiSuggestions.querySelectorAll('.ai-suggest-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      aiInput.value = btn.dataset.q;
+      handleSend();
+    });
+  });
 
   function askAbout(name) {
     const question = `Reci mi više o UNESCO mjestu ${name} — povijest, što posjetiti i praktične informacije?`;
-    addMessage(question, 'user');
-    callAI(question);
-    if (window.innerWidth <= 900) {
-      const panel = document.getElementById('chatPanel');
-      const btn = document.getElementById('chatToggle');
-      if (!panel.classList.contains('open')) {
-        panel.classList.add('open');
-        btn.classList.add('active');
-        btn.textContent = '✕';
-      }
+    addMsg(question, 'user');
+    aiSuggestions.style.display = 'none';
+    if (!aiPanel.classList.contains('open')) {
+      aiPanel.classList.add('open');
     }
-    messagesDiv.scrollIntoView({ behavior: 'smooth' });
+    callAI(question);
   }
 
   const observer = new IntersectionObserver((entries) => {
@@ -545,7 +532,6 @@
       }
     });
   }, { threshold: 0.08 });
-
   document.querySelectorAll('.unesco-card').forEach(el => observer.observe(el));
 </script>
 
