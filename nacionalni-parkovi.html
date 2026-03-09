@@ -46,6 +46,11 @@
     --text-dark: #1C1C1A;
     --text-mid: #4A4A46;
     --text-light: #8A8A84;
+    --sea: #2A7FA8;
+    --sea-dark: #1A5F80;
+    --coral: #D4654A;
+    --airbnb: #FF5A5F;
+    --adriatic: #1B6B93;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -256,6 +261,18 @@
   .park-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); text-decoration: none; border-bottom: 1px solid rgba(42,107,74,0.3); padding-bottom: 2px; transition: all 0.3s; width: fit-content; }
   .park-link:hover { color: var(--green-light); gap: 10px; }
 
+  .park-booking { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .btn-park { display: inline-flex; align-items: center; gap: 5px; padding: 7px 12px; color: white; text-decoration: none; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 2px; transition: all 0.3s; white-space: nowrap; }
+  .btn-park:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+  .btn-park.bp-booking { background: var(--sea); }
+  .btn-park.bp-booking:hover { background: var(--sea-dark); }
+  .btn-park.bp-airbnb { background: var(--airbnb); }
+  .btn-park.bp-airbnb:hover { background: #e04e53; }
+  .btn-park.bp-adriatic { background: var(--adriatic); }
+  .btn-park.bp-adriatic:hover { background: #145577; }
+  .btn-park.bp-google { background: var(--coral); }
+  .btn-park.bp-google:hover { background: #b8503a; }
+
   .chat-panel { position: sticky; top: 0; height: 100vh; background: var(--cream); border-left: 1px solid var(--sand); display: flex; flex-direction: column; }
   .chat-header { padding: 28px 24px 20px; border-bottom: 1px solid var(--sand); background: var(--white); }
   .chat-header h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
@@ -359,6 +376,12 @@
             <span class="fact">🌊 Slapovi do 78m</span>
           </div>
           <a href="https://np-plitvicka-jezera.hr" target="_blank" rel="noopener noreferrer" class="park-link">Službena stranica →</a>
+          <div class="park-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Plitvicka+Jezera" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Plitvice-Lakes--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/kvarner/plitvicka-jezera" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Plitvička+jezera" target="_blank" rel="noopener noreferrer" class="btn-park bp-google">📍 Maps</a>
+          </div>
         </div>
       </div>
 
@@ -378,6 +401,12 @@
             <span class="fact">🏛️ Rimske ruševine</span>
           </div>
           <a href="https://np-krka.hr" target="_blank" rel="noopener noreferrer" class="park-link">Službena stranica →</a>
+          <div class="park-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Skradin%2C+Croatia" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Skradin--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/dalmacija/sibenik/skradin" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Skradin+Krka" target="_blank" rel="noopener noreferrer" class="btn-park bp-google">📍 Maps</a>
+          </div>
         </div>
       </div>
 
@@ -397,6 +426,12 @@
             <span class="fact">🤿 Ronjenje</span>
           </div>
           <a href="https://np-kornati.hr" target="_blank" rel="noopener noreferrer" class="park-link">Službena stranica →</a>
+          <div class="park-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Murter%2C+Croatia" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Murter--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/dalmacija/sibenik/murter" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Murter+Kornati" target="_blank" rel="noopener noreferrer" class="btn-park bp-google">📍 Maps</a>
+          </div>
         </div>
       </div>
 
@@ -416,6 +451,12 @@
             <span class="fact">🦅 Orao kliktaš</span>
           </div>
           <a href="https://np-paklenica.hr" target="_blank" rel="noopener noreferrer" class="park-link">Službena stranica →</a>
+          <div class="park-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Starigrad+Paklenica" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Starigrad-Paklenica--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/dalmacija/zadar/starigrad" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Starigrad+Paklenica" target="_blank" rel="noopener noreferrer" class="btn-park bp-google">📍 Maps</a>
+          </div>
         </div>
       </div>
 
@@ -435,6 +476,12 @@
             <span class="fact">🏔️ 1528m visine</span>
           </div>
           <a href="https://np-risnjak.hr" target="_blank" rel="noopener noreferrer" class="park-link">Službena stranica →</a>
+          <div class="park-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Delnice%2C+Croatia" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Delnice--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/kvarner/delnice" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Delnice+Risnjak" target="_blank" rel="noopener noreferrer" class="btn-park bp-google">📍 Maps</a>
+          </div>
         </div>
       </div>
 
@@ -454,6 +501,12 @@
             <span class="fact">🦋 Endemske vrste</span>
           </div>
           <a href="https://np-sjeverni-velebit.hr" target="_blank" rel="noopener noreferrer" class="park-link">Službena stranica →</a>
+          <div class="park-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Senj%2C+Croatia" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Senj--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/kvarner/senj" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Senj+Velebit" target="_blank" rel="noopener noreferrer" class="btn-park bp-google">📍 Maps</a>
+          </div>
         </div>
       </div>
 
@@ -473,6 +526,12 @@
             <span class="fact">🏛️ Rimske ruševine</span>
           </div>
           <a href="https://np-brijuni.hr" target="_blank" rel="noopener noreferrer" class="park-link">Službena stranica →</a>
+          <div class="park-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Fazana%2C+Croatia" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Fažana--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/istra/fazana" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Fažana+Brijuni" target="_blank" rel="noopener noreferrer" class="btn-park bp-google">📍 Maps</a>
+          </div>
         </div>
       </div>
 
@@ -492,6 +551,12 @@
             <span class="fact">⛪ Benediktinski manastir</span>
           </div>
           <a href="https://np-mljet.hr" target="_blank" rel="noopener noreferrer" class="park-link">Službena stranica →</a>
+          <div class="park-booking">
+            <a href="https://www.booking.com/searchresults.hr.html?ss=Mljet%2C+Croatia" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-booking">🏨 Booking</a>
+            <a href="https://www.airbnb.com/s/Mljet--Croatia/homes" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-airbnb">🏠 Airbnb</a>
+            <a href="https://www.adriatic.hr/hr/smjestaj-hrvatska/dalmacija/mljet" target="_blank" rel="noopener noreferrer sponsored" class="btn-park bp-adriatic">🌊 Adriatic</a>
+            <a href="https://www.google.com/maps/search/smještaj+Mljet" target="_blank" rel="noopener noreferrer" class="btn-park bp-google">📍 Maps</a>
+          </div>
         </div>
       </div>
 
