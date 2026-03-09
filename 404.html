@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZKLS10NPJ9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZKLS10NPJ9');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stranica nije pronađena — OtkrijteHR</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --white: #FAFAF8; --cream: #F5F2EC; --sand: #E8E0D0; --gold: #C9A84C; --sea: #2A7FA8; --sea-dark: #1A5F80; --text-dark: #1C1C1A; --text-mid: #4A4A46; --text-light: #8A8A84; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Outfit', sans-serif; background: var(--white); color: var(--text-dark); min-height: 100vh; display: flex; flex-direction: column; }
+
+  nav { padding: 20px 60px; display: flex; justify-content: space-between; align-items: center; background: rgba(250,250,248,0.95); border-bottom: 1px solid rgba(201,168,76,0.2); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: var(--text-dark); text-decoration: none; }
+  .logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mid); transition: color 0.3s; }
+  .nav-links a:hover { color: var(--text-dark); }
+
+  .error-page { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 60px 24px; }
+  .error-code { font-family: 'Cormorant Garamond', serif; font-size: clamp(6rem, 15vw, 12rem); font-weight: 300; color: var(--sand); line-height: 1; }
+  .error-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; color: var(--text-dark); margin: 16px 0 12px; }
+  .error-desc { font-size: 1rem; color: var(--text-mid); max-width: 480px; line-height: 1.7; margin-bottom: 32px; }
+  .error-links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .error-link { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; text-decoration: none; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 2px; transition: all 0.3s; }
+  .error-link.primary { background: var(--sea); color: white; }
+  .error-link.primary:hover { background: var(--sea-dark); transform: translateY(-2px); }
+  .error-link.secondary { background: var(--cream); color: var(--text-dark); border: 1px solid var(--sand); }
+  .error-link.secondary:hover { background: var(--sand); transform: translateY(-2px); }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Otkrijte<span>HR</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#ljetovanje">Ljetovanje</a></li>
+    <li><a href="otoci.html">Otoci</a></li>
+    <li><a href="nacionalni-parkovi.html">Parkovi</a></li>
+    <li><a href="unesco.html">UNESCO</a></li>
+    <li><a href="priroda-avantura.html">Priroda</a></li>
+    <li><a href="saranski-ribolov.html">Ribolov</a></li>
+    <li><a href="karta.html">Karta</a></li>
+  </ul>
+</nav>
+
+<div class="error-page">
+  <div class="error-code">404</div>
+  <h1 class="error-title">Stranica nije pronađena</h1>
+  <p class="error-desc">Izgleda da ste se izgubili na putu kroz Hrvatsku. Ne brinite — pronađite svoju destinaciju ispod!</p>
+  <div class="error-links">
+    <a href="index.html" class="error-link primary">Početna stranica</a>
+    <a href="otoci.html" class="error-link secondary">Otoci</a>
+    <a href="nacionalni-parkovi.html" class="error-link secondary">Parkovi</a>
+    <a href="karta.html" class="error-link secondary">Karta</a>
+  </div>
+</div>
+
+</body>
+</html>
