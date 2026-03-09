@@ -89,6 +89,12 @@
         "position": 5,
         "name": "UNESCO",
         "item": "https://otkrijte-hr.netlify.app/unesco.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "name": "Šaranski ribolov",
+        "item": "https://otkrijte-hr.netlify.app/saranski-ribolov.html"
       }
     ]
   }
@@ -821,37 +827,14 @@
       box-shadow: 0 4px 16px rgba(0,0,0,0.2);
     }
 
-    .btn-reserve.btn-booking-com {
-      background: var(--sea);
-    }
-    .btn-reserve.btn-booking-com:hover {
-      background: var(--sea-dark);
-      box-shadow: 0 4px 16px rgba(42,127,168,0.3);
-    }
-
-    .btn-reserve.btn-google {
-      background: var(--coral);
-    }
-    .btn-reserve.btn-google:hover {
-      background: #b8503a;
-      box-shadow: 0 4px 16px rgba(212,101,74,0.3);
-    }
-
-    .btn-reserve.btn-airbnb {
-      background: var(--airbnb);
-    }
-    .btn-reserve.btn-airbnb:hover {
-      background: #e04e53;
-      box-shadow: 0 4px 16px rgba(255,90,95,0.3);
-    }
-
-    .btn-reserve.btn-adriatic {
-      background: var(--adriatic);
-    }
-    .btn-reserve.btn-adriatic:hover {
-      background: #145577;
-      box-shadow: 0 4px 16px rgba(27,107,147,0.3);
-    }
+    .btn-reserve.btn-booking-com { background: var(--sea); }
+    .btn-reserve.btn-booking-com:hover { background: var(--sea-dark); box-shadow: 0 4px 16px rgba(42,127,168,0.3); }
+    .btn-reserve.btn-google { background: var(--coral); }
+    .btn-reserve.btn-google:hover { background: #b8503a; box-shadow: 0 4px 16px rgba(212,101,74,0.3); }
+    .btn-reserve.btn-airbnb { background: var(--airbnb); }
+    .btn-reserve.btn-airbnb:hover { background: #e04e53; box-shadow: 0 4px 16px rgba(255,90,95,0.3); }
+    .btn-reserve.btn-adriatic { background: var(--adriatic); }
+    .btn-reserve.btn-adriatic:hover { background: #145577; box-shadow: 0 4px 16px rgba(27,107,147,0.3); }
 
     .beach-card.featured { grid-column: span 2; }
     .beach-card.featured .beach-img-wrap { aspect-ratio: 16/7; }
@@ -903,15 +886,8 @@
       box-shadow: 0 24px 60px rgba(42,127,168,0.4), 0 0 0 2px var(--gold-light);
       border-color: var(--gold-light) !important;
     }
-    .map-card:hover .btn-map-full {
-      background: var(--gold);
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(201,168,76,0.4);
-    }
-    .map-card:hover .map-embed {
-      border-color: rgba(255,255,255,0.5);
-    }
+    .map-card:hover .btn-map-full { background: var(--gold); color: white; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,168,76,0.4); }
+    .map-card:hover .map-embed { border-color: rgba(255,255,255,0.5); }
 
     .map-inner {
       padding: 40px;
@@ -924,11 +900,7 @@
     }
 
     .map-header { margin-bottom: 24px; }
-    .map-header .section-tag {
-      color: var(--gold-light);
-      font-size: 0.78rem;
-      letter-spacing: 0.25em;
-    }
+    .map-header .section-tag { color: var(--gold-light); font-size: 0.78rem; letter-spacing: 0.25em; }
 
     .map-title {
       font-family: 'Cormorant Garamond', serif;
@@ -975,11 +947,7 @@
       width: fit-content;
       box-shadow: 0 4px 16px rgba(0,0,0,0.15);
     }
-    .btn-map-full:hover {
-      background: var(--cream);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-    }
+    .btn-map-full:hover { background: var(--cream); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
 
     .booking-banner {
       margin: 60px 0 0;
@@ -1028,11 +996,7 @@
       border-radius: 2px;
       transition: all 0.3s;
     }
-    .btn-booking:hover {
-      background: var(--cream);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-    }
+    .btn-booking:hover { background: var(--cream); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
 
     .btn-maps {
       display: inline-flex;
@@ -1050,11 +1014,7 @@
       border-radius: 2px;
       transition: all 0.3s;
     }
-    .btn-maps:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: white;
-      transform: translateY(-2px);
-    }
+    .btn-maps:hover { background: rgba(255,255,255,0.1); border-color: white; transform: translateY(-2px); }
 
     footer {
       padding: 60px;
@@ -1149,6 +1109,7 @@
     <li><a href="nacionalni-parkovi.html">Parkovi</a></li>
     <li><a href="unesco.html">UNESCO</a></li>
     <li><a href="priroda-avantura.html">Priroda</a></li>
+    <li><a href="saranski-ribolov.html">Ribolov</a></li>
     <li><a href="karta.html">Karta</a></li>
   </ul>
 </nav>
@@ -1160,6 +1121,7 @@
   <a href="nacionalni-parkovi.html">Parkovi</a>
   <a href="unesco.html">UNESCO</a>
   <a href="priroda-avantura.html">Priroda</a>
+  <a href="saranski-ribolov.html">Ribolov</a>
   <a href="karta.html">Karta</a>
 </div>
 
@@ -1307,6 +1269,7 @@
       </div>
     </div>
 
+    <!-- 4-10: Remaining beach cards identical to original -->
     <!-- 4. Dubrovnik -->
     <div class="beach-card">
       <div class="beach-img-wrap">
@@ -1318,11 +1281,7 @@
         <div class="beach-region">Dalmacija · Dubrovnik</div>
         <h3 class="beach-name">Banje Beach</h3>
         <p class="beach-desc">Urbana plaža s pogledom na stare gradske zidine. Kombinacija kupanja, gastronomije i kulturnog turizma.</p>
-        <div class="beach-highlights">
-          <span class="highlight-tag">🏰 Stari grad</span>
-          <span class="highlight-tag">🌅 Zalazak</span>
-          <span class="highlight-tag">🍹 Beach bar</span>
-        </div>
+        <div class="beach-highlights"><span class="highlight-tag">🏰 Stari grad</span><span class="highlight-tag">🌅 Zalazak</span><span class="highlight-tag">🍹 Beach bar</span></div>
         <div class="restoran-highlight"><div class="restoran-chip">🦪 Restaurant 360°</div></div>
         <div class="beach-footer">
           <div class="beach-rating"><span class="stars">★★★★☆</span> <span>4.6 · 4.891 recenzija</span></div>
@@ -1347,11 +1306,7 @@
         <div class="beach-region">Kvarner · Pag</div>
         <h3 class="beach-name">Zrće Beach</h3>
         <p class="beach-desc">Hrvatska Ibiza — šljunčana plaža poznata po noćnim klubovima i ljetnim festivalima. Za mlađu publiku koja traži zabavu.</p>
-        <div class="beach-highlights">
-          <span class="highlight-tag">🎵 Festivali</span>
-          <span class="highlight-tag">🌊 Avantura</span>
-          <span class="highlight-tag">🏐 Beach sport</span>
-        </div>
+        <div class="beach-highlights"><span class="highlight-tag">🎵 Festivali</span><span class="highlight-tag">🌊 Avantura</span><span class="highlight-tag">🏐 Beach sport</span></div>
         <div class="restoran-highlight"><div class="restoran-chip">🍔 Papaya Beach Club</div></div>
         <div class="beach-footer">
           <div class="beach-rating"><span class="stars">★★★★☆</span> <span>4.5 · 2.130 recenzija</span></div>
@@ -1376,15 +1331,8 @@
         <div class="beach-region">Kvarner · Crikvenica</div>
         <h3 class="beach-name">Plaža Crikvenica</h3>
         <p class="beach-desc">Obiteljska destinacija s plitkim morem, šetnicom uz obalu i odličnom infrastrukturom. Idealno za odmor s djecom.</p>
-        <div class="beach-highlights">
-          <span class="highlight-tag">👶 Obiteljski</span>
-          <span class="highlight-tag">🚶 Šetnica</span>
-          <span class="highlight-tag">🏊 Plivanje</span>
-        </div>
-        <div class="restoran-highlight">
-          <div class="restoran-chip">🍝 Konoba Feral</div>
-          <div class="restoran-chip">🍦 Pizzeria Adria</div>
-        </div>
+        <div class="beach-highlights"><span class="highlight-tag">👶 Obiteljski</span><span class="highlight-tag">🚶 Šetnica</span><span class="highlight-tag">🏊 Plivanje</span></div>
+        <div class="restoran-highlight"><div class="restoran-chip">🍝 Konoba Feral</div><div class="restoran-chip">🍦 Pizzeria Adria</div></div>
         <div class="beach-footer">
           <div class="beach-rating"><span class="stars">★★★★☆</span> <span>4.5 · 1.784 recenzija</span></div>
           <div class="booking-buttons">
@@ -1408,11 +1356,7 @@
         <div class="beach-region">Dalmacija · Hvar</div>
         <h3 class="beach-name">Dubovica – Hvar</h3>
         <p class="beach-desc">Elegantni otok omiljenih jetsettera i slavnih. Lavandina polja, bistre uvale i vrhunska gastronomija čine ga posebnim.</p>
-        <div class="beach-highlights">
-          <span class="highlight-tag">🌸 Lavanda</span>
-          <span class="highlight-tag">⛵ Jahte</span>
-          <span class="highlight-tag">🌃 Noćni život</span>
-        </div>
+        <div class="beach-highlights"><span class="highlight-tag">🌸 Lavanda</span><span class="highlight-tag">⛵ Jahte</span><span class="highlight-tag">🌃 Noćni život</span></div>
         <div class="restoran-highlight"><div class="restoran-chip">⭐ Gariful Restaurant</div></div>
         <div class="beach-footer">
           <div class="beach-rating"><span class="stars">★★★★★</span> <span>4.8 · 3.247 recenzija</span></div>
@@ -1437,11 +1381,7 @@
         <div class="beach-region">Dalmacija · Makarska</div>
         <h3 class="beach-name">Nugal – Makarska</h3>
         <p class="beach-desc">Divlja i netaknuta plaža skrivena ispod strmih litica Biokova. Dostupna samo pješice, nagrađuje one koji dođu nestvarnom tišinom i čistoćom mora.</p>
-        <div class="beach-highlights">
-          <span class="highlight-tag">🧗 Biokovo</span>
-          <span class="highlight-tag">🌿 Netaknuta priroda</span>
-          <span class="highlight-tag">🔇 Mir</span>
-        </div>
+        <div class="beach-highlights"><span class="highlight-tag">🧗 Biokovo</span><span class="highlight-tag">🌿 Netaknuta priroda</span><span class="highlight-tag">🔇 Mir</span></div>
         <div class="restoran-highlight"><div class="restoran-chip">🍝 Konoba Stari Mlin</div></div>
         <div class="beach-footer">
           <div class="beach-rating"><span class="stars">★★★★★</span> <span>4.9 · 876 recenzija</span></div>
@@ -1466,11 +1406,7 @@
         <div class="beach-region">Dalmacija · Korčula</div>
         <h3 class="beach-name">Lumbarda – Korčula</h3>
         <p class="beach-desc">Jedina prava pješčana plaža na dalmatinskim otocima. Okružena vinogradima poznatog bijelog vina Grk, nudi jedinstvenu kombinaciju prirode i kulture.</p>
-        <div class="beach-highlights">
-          <span class="highlight-tag">🍷 Grk vino</span>
-          <span class="highlight-tag">🏰 Stari grad</span>
-          <span class="highlight-tag">🏖️ Pijesak</span>
-        </div>
+        <div class="beach-highlights"><span class="highlight-tag">🍷 Grk vino</span><span class="highlight-tag">🏰 Stari grad</span><span class="highlight-tag">🏖️ Pijesak</span></div>
         <div class="restoran-highlight"><div class="restoran-chip">🦞 LD Restaurant</div></div>
         <div class="beach-footer">
           <div class="beach-rating"><span class="stars">★★★★☆</span> <span>4.6 · 1.432 recenzija</span></div>
@@ -1495,15 +1431,8 @@
         <div class="beach-region">Kvarner · Rab</div>
         <h3 class="beach-name">Rajska plaža – Lopar</h3>
         <p class="beach-desc">Najdulja pješčana plaža na Jadranu — 1,8 km čistog pijeska i plitkog mora. Idealna za obitelji s djecom, zbog čega je i prozvana "Rajskom plažom".</p>
-        <div class="beach-highlights">
-          <span class="highlight-tag">🏖️ 1,8 km pijeska</span>
-          <span class="highlight-tag">👶 Plitko more</span>
-          <span class="highlight-tag">🌊 Sigurno kupanje</span>
-        </div>
-        <div class="restoran-highlight">
-          <div class="restoran-chip">🍦 Beach Bar Raj</div>
-          <div class="restoran-chip">🍕 Konoba Lopar</div>
-        </div>
+        <div class="beach-highlights"><span class="highlight-tag">🏖️ 1,8 km pijeska</span><span class="highlight-tag">👶 Plitko more</span><span class="highlight-tag">🌊 Sigurno kupanje</span></div>
+        <div class="restoran-highlight"><div class="restoran-chip">🍦 Beach Bar Raj</div><div class="restoran-chip">🍕 Konoba Lopar</div></div>
         <div class="beach-footer">
           <div class="beach-rating"><span class="stars">★★★★★</span> <span>4.8 · 2.103 recenzija</span></div>
           <div class="booking-buttons">
@@ -1535,7 +1464,6 @@
 
   </div>
 
-
   <!-- BOOKING BANNER -->
   <div class="booking-banner">
     <div class="booking-text">
@@ -1565,6 +1493,7 @@
       <li><a href="nacionalni-parkovi.html">🏔️ Nacionalni parkovi</a></li>
       <li><a href="unesco.html">🏛️ UNESCO</a></li>
       <li><a href="priroda-avantura.html">🥾 Priroda &amp; Avantura</a></li>
+      <li><a href="saranski-ribolov.html">🎣 Šaranski ribolov</a></li>
       <li><a href="karta.html">🗺️ Karta</a></li>
     </ul>
   </div>
@@ -1593,7 +1522,6 @@
     document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
   });
 
-  // Zatvori mobilni meni kad se klikne link
   mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       hamburger.classList.remove('active');
@@ -1602,7 +1530,6 @@
     });
   });
 
-  // Smooth scroll za anchor linkove
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
       const target = document.querySelector(this.getAttribute('href'));
@@ -1613,7 +1540,6 @@
     });
   });
 
-  // Scroll reveal animacija za kartice
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
