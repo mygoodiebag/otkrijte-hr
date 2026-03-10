@@ -143,7 +143,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 60px;display:fl
       <button class="lang-btn" aria-label="Select language">&#x1F1EE;&#x1F1F9;</button>
       <div class="lang-dropdown-menu">
         <a href="../priroda-avantura.html">&#x1F1ED;&#x1F1F7;</a>
-        <a href="../en/nature-adventure.html">&#x1F1EC;&#x1F1E7;</a>
+        <a href="../en/nature-adventure.html">EN</a>
         <a href="../de/natur-abenteuer.html">&#x1F1E9;&#x1F1EA;</a>
       </div>
     </li>
@@ -161,7 +161,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 60px;display:fl
   <a href="mappa.html">Mappa</a>
   <div class="mobile-lang-row">
     <a href="../priroda-avantura.html">&#x1F1ED;&#x1F1F7;</a>
-    <a href="../en/nature-adventure.html">&#x1F1EC;&#x1F1E7;</a>
+    <a href="../en/nature-adventure.html">EN</a>
     <a href="../de/natur-abenteuer.html">&#x1F1E9;&#x1F1EA;</a>
   </div>
 </div>
@@ -556,6 +556,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 60px;display:fl
   });
   catLinks.forEach(l => {
     l.addEventListener('click', e => { e.preventDefault(); const t = document.querySelector(l.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  });
+
+  // Language dropdown
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      this.nextElementSibling.classList.toggle('active');
+    });
+  });
+  document.addEventListener('click', function() {
+    document.querySelectorAll('.lang-dropdown-menu').forEach(m => m.classList.remove('active'));
   });
 </script>
 </body>

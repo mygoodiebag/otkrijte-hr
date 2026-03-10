@@ -359,7 +359,7 @@
       <button class="lang-btn" aria-label="Select language">&#x1F1EE;&#x1F1F9;</button>
       <div class="lang-dropdown-menu">
         <a href="../karta.html">&#x1F1ED;&#x1F1F7;</a>
-        <a href="../en/map.html">&#x1F1EC;&#x1F1E7;</a>
+        <a href="../en/map.html">EN</a>
         <a href="../de/karte.html">&#x1F1E9;&#x1F1EA;</a>
       </div>
     </li>
@@ -377,7 +377,7 @@
   <a href="mappa.html">Mappa</a>
   <div class="mobile-lang-row">
     <a href="../karta.html">&#x1F1ED;&#x1F1F7;</a>
-    <a href="../en/map.html">&#x1F1EC;&#x1F1E7;</a>
+    <a href="../en/map.html">EN</a>
     <a href="../de/karte.html">&#x1F1E9;&#x1F1EA;</a>
   </div>
 </div>
@@ -509,6 +509,17 @@
   function askQuick(q) { sendMessage(q); }
   chatSend.addEventListener('click', () => sendMessage());
   chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+
+  // Language dropdown
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      this.nextElementSibling.classList.toggle('active');
+    });
+  });
+  document.addEventListener('click', function() {
+    document.querySelectorAll('.lang-dropdown-menu').forEach(m => m.classList.remove('active'));
+  });
 </script>
 
 </body>

@@ -1134,7 +1134,7 @@
     <li><a href="carp-fishing.html">Fishing</a></li>
     <li><a href="map.html">Map</a></li>
     <li class="lang-dropdown">
-      <button class="lang-btn" aria-label="Select language">&#x1F1EC;&#x1F1E7;</button>
+      <button class="lang-btn" aria-label="Select language">EN</button>
       <div class="lang-dropdown-menu">
         <a href="../index.html">&#x1F1ED;&#x1F1F7;</a>
         <a href="../de/index.html">&#x1F1E9;&#x1F1EA;</a>
@@ -1588,6 +1588,17 @@
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     observer.observe(el);
+  });
+
+  // Language dropdown
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      this.nextElementSibling.classList.toggle('active');
+    });
+  });
+  document.addEventListener('click', function() {
+    document.querySelectorAll('.lang-dropdown-menu').forEach(m => m.classList.remove('active'));
   });
 </script>
 </body>

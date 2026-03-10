@@ -189,7 +189,7 @@
       <button class="lang-btn" aria-label="Select language">&#x1F1E9;&#x1F1EA;</button>
       <div class="lang-dropdown-menu">
         <a href="../nacionalni-parkovi.html">&#x1F1ED;&#x1F1F7;</a>
-        <a href="../en/national-parks.html">&#x1F1EC;&#x1F1E7;</a>
+        <a href="../en/national-parks.html">EN</a>
         <a href="../it/parchi-nazionali.html">&#x1F1EE;&#x1F1F9;</a>
       </div>
     </li>
@@ -206,7 +206,7 @@
   <a href="karte.html">Karte</a>
   <div class="mobile-lang-row">
     <a href="../nacionalni-parkovi.html">&#x1F1ED;&#x1F1F7;</a>
-    <a href="../en/national-parks.html">&#x1F1EC;&#x1F1E7;</a>
+    <a href="../en/national-parks.html">EN</a>
     <a href="../it/parchi-nazionali.html">&#x1F1EE;&#x1F1F9;</a>
   </div>
 </div>
@@ -559,6 +559,17 @@
     });
   }, { threshold: 0.08 });
   document.querySelectorAll('.park-card').forEach(el => observer.observe(el));
+
+  // Language dropdown
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      this.nextElementSibling.classList.toggle('active');
+    });
+  });
+  document.addEventListener('click', function() {
+    document.querySelectorAll('.lang-dropdown-menu').forEach(m => m.classList.remove('active'));
+  });
 </script>
 
 </body>
