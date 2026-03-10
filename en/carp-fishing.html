@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Google Analytics -->
@@ -196,18 +196,14 @@
     .nav-links a.active { color: var(--forest); font-weight: 600; }
     .nav-links a.active::after { width: 100%; background: var(--forest); }
 
-    .lang-switch {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--text-mid);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      transition: color 0.3s;
-    }
-    .lang-switch:hover { color: var(--text-dark); }
+    .lang-dropdown{position:relative}
+  .lang-btn{background:none;border:none;font-size:1.5rem;cursor:pointer;padding:2px 4px;line-height:1;display:flex;align-items:center}
+  .lang-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);right:0;background:rgba(250,250,248,0.98);border:1px solid rgba(201,168,76,0.25);border-radius:10px;padding:8px 6px;flex-direction:column;gap:2px;box-shadow:0 4px 16px rgba(0,0,0,0.10);z-index:110}
+  .lang-dropdown-menu.active{display:flex}
+  .lang-dropdown-menu a{font-size:1.4rem;text-decoration:none;padding:6px 10px;border-radius:6px;transition:background 0.2s;line-height:1}
+  .lang-dropdown-menu a:hover{background:rgba(201,168,76,0.12)}
+  .mobile-lang-row{display:flex;gap:18px;justify-content:center;margin-top:8px}
+  .mobile-lang-row a{font-size:2rem!important;text-decoration:none}
 
     .nav-hamburger {
       display: none;
@@ -1017,9 +1013,14 @@
     <li><a href="nature-adventure.html">Nature</a></li>
     <li><a href="carp-fishing.html" class="active">Fishing</a></li>
     <li><a href="map.html">Map</a></li>
-    <li><a href="../carp-fishing.html" class="lang-switch">HR</a></li>
-    <li><a href="../de/karpfenangeln.html" class="lang-switch">DE</a></li>
-    <li><a href="../it/pesca-carpa.html" class="lang-switch">IT</a></li>
+    <li class="lang-dropdown">
+      <button class="lang-btn" aria-label="Select language">&#x1F1EC;&#x1F1E7;</button>
+      <div class="lang-dropdown-menu">
+        <a href="../saranski-ribolov.html">&#x1F1ED;&#x1F1F7;</a>
+        <a href="../de/karpfenangeln.html">&#x1F1E9;&#x1F1EA;</a>
+        <a href="../it/pesca-carpa.html">&#x1F1EE;&#x1F1F9;</a>
+      </div>
+    </li>
   </ul>
 </nav>
 
@@ -1032,9 +1033,11 @@
   <a href="nature-adventure.html">Nature</a>
   <a href="carp-fishing.html">Fishing</a>
   <a href="map.html">Map</a>
-  <a href="../carp-fishing.html" class="lang-switch">Hrvatski</a>
-  <a href="../de/karpfenangeln.html" class="lang-switch">Deutsch</a>
-  <a href="../it/pesca-carpa.html" class="lang-switch">Italiano</a>
+  <div class="mobile-lang-row">
+    <a href="../saranski-ribolov.html">&#x1F1ED;&#x1F1F7;</a>
+    <a href="../de/karpfenangeln.html">&#x1F1E9;&#x1F1EA;</a>
+    <a href="../it/pesca-carpa.html">&#x1F1EE;&#x1F1F9;</a>
+  </div>
 </div>
 
 <!-- HERO -->

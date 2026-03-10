@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="it">
 <head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZKLS10NPJ9"></script>
@@ -60,8 +60,14 @@
   .nav-links a:hover::after { width: 100%; }
   .nav-links a.active { color: var(--green); font-weight: 600; }
   .nav-links a.active::after { width: 100%; background: var(--green); }
-  .lang-switch { font-size: 0.78rem; font-weight: 500; color: var(--text-mid); text-decoration: none; letter-spacing: 0.08em; transition: color 0.3s; }
-  .lang-switch:hover { color: var(--text-dark); }
+  .lang-dropdown{position:relative}
+  .lang-btn{background:none;border:none;font-size:1.5rem;cursor:pointer;padding:2px 4px;line-height:1;display:flex;align-items:center}
+  .lang-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);right:0;background:rgba(250,250,248,0.98);border:1px solid rgba(201,168,76,0.25);border-radius:10px;padding:8px 6px;flex-direction:column;gap:2px;box-shadow:0 4px 16px rgba(0,0,0,0.10);z-index:110}
+  .lang-dropdown-menu.active{display:flex}
+  .lang-dropdown-menu a{font-size:1.4rem;text-decoration:none;padding:6px 10px;border-radius:6px;transition:background 0.2s;line-height:1}
+  .lang-dropdown-menu a:hover{background:rgba(201,168,76,0.12)}
+  .mobile-lang-row{display:flex;gap:18px;justify-content:center;margin-top:8px}
+  .mobile-lang-row a{font-size:2rem!important;text-decoration:none}
   .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
   .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--text-dark); transition: all 0.3s; }
   .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99; background: rgba(250,250,248,0.98); backdrop-filter: blur(16px); flex-direction: column; align-items: center; justify-content: center; gap: 32px; opacity: 0; transition: opacity 0.3s ease; }
@@ -179,9 +185,14 @@
     <li><a href="natura-avventura.html">Natura</a></li>
     <li><a href="pesca-carpa.html">Pesca</a></li>
     <li><a href="mappa.html">Mappa</a></li>
-    <li><a href="../nacionalni-parkovi.html" class="lang-switch">HR</a></li>
-    <li><a href="../en/national-parks.html" class="lang-switch">EN</a></li>
-    <li><a href="../de/nationalparks.html" class="lang-switch">DE</a></li>
+    <li class="lang-dropdown">
+      <button class="lang-btn" aria-label="Select language">&#x1F1EE;&#x1F1F9;</button>
+      <div class="lang-dropdown-menu">
+        <a href="../nacionalni-parkovi.html">&#x1F1ED;&#x1F1F7;</a>
+        <a href="../en/national-parks.html">&#x1F1EC;&#x1F1E7;</a>
+        <a href="../de/nationalparks.html">&#x1F1E9;&#x1F1EA;</a>
+      </div>
+    </li>
   </ul>
 </nav>
 
@@ -193,9 +204,11 @@
   <a href="natura-avventura.html">Natura</a>
   <a href="pesca-carpa.html">Pesca</a>
   <a href="mappa.html">Mappa</a>
-  <a href="../nacionalni-parkovi.html" class="lang-switch">Hrvatski</a>
-  <a href="../en/national-parks.html" class="lang-switch">English</a>
-  <a href="../de/nationalparks.html" class="lang-switch">Deutsch</a>
+  <div class="mobile-lang-row">
+    <a href="../nacionalni-parkovi.html">&#x1F1ED;&#x1F1F7;</a>
+    <a href="../en/national-parks.html">&#x1F1EC;&#x1F1E7;</a>
+    <a href="../de/nationalparks.html">&#x1F1E9;&#x1F1EA;</a>
+  </div>
 </div>
 
 <section class="hero">
